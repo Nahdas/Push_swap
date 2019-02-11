@@ -20,4 +20,3 @@ void     ft_del_first(t_pile **alst)
     (*alst) = (*alst)->next;
     free (tmp);
 }
-
