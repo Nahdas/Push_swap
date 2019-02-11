@@ -12,6 +12,73 @@
 
 #include "checker.h"
 
+int 	ft_prealable(char **argv)
+{
+	int opt;
+
+	opt = ft_options(argv);
+	if (opt < 0)
+		return (opt);
+	opt = ft_is_valid(argv, opt);
+	if (opt < 0)
+		ft_putstr("Error\n");
+	return (opt);
+}
+
+void			ft_lst_push(t_list **alst, t_list *news)
+{
+	if (alst && news)
+	{
+		t_list *current;
+
+		current = *alst;
+		while (current->next != NULL)
+		{
+			current = current->next;
+		}
+		current->next = news;
+	}
+}
+
+void			ft_pile_add(t_pile **alst, t_pile *news)
+{
+	if (alst && news)
+	{
+		t_pile *current;
+
+		current = *alst;
+		while (current->next != NULL)
+		{
+			current = current->next;
+		}
+		current->next = news;
+	}
+}
+
+t_pile			*ft_pile_new(const int	content, size_t content_size)
+{
+	t_pile	*tmp;
+
+	if (!(tmp = (t_pile *)malloc(sizeof(t_pile))))
+		return (NULL);
+	if (!content)
+	{
+		tmp->content = 0;
+		tmp->content_size = 0;
+		tmp->next = NULL;
+		return (tmp);
+	}
+	else
+	{
+		if (!(tmp->content = (int)malloc(content_size)))
+			return (NULL);
+		tmp->content = content;
+		tmp->content_size = content_size;
+		tmp->next = NULL;
+		return (tmp);
+	}
+}
+
 long long		ft_long_atoi(const char *str)
 {
 	long long	i;

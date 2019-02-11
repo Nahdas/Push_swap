@@ -17,6 +17,36 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-long long ft_long_atoi(const char *str);
-int		  ft_printf(const char *format, ...);
+struct					s_pile
+{
+	int 			content;
+	size_t			content_size;
+	struct s_pile	*next;
+};
+typedef struct s_pile	t_pile;
+
+void			        ft_lst_push(t_list **alst, t_list *news);
+
+long long               ft_long_atoi(const char *str);
+
+int		                ft_printf(const char *format, ...);
+
+int 	                ft_options(char **tab);
+
+void			        ft_pile_add(t_pile **alst, t_pile *news);
+
+t_pile		        	*ft_pile_new(const int	content, size_t content_size);
+
+int 	                ft_prealable(char **argv);
+
+int		                ft_is_valid(char **argv, int opt);
+
+void                    ft_resolve(t_pile **lst, t_list **inst);
+
+int                     swap(t_pile **lst);
+
+int                     push(t_pile **lst, t_pile **lst_b);
+
+void                    ft_del_first(t_pile **alst);
+
 #endif

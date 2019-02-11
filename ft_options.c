@@ -47,7 +47,6 @@ int 	ft_is_opt(char *str)
 		{
 			if (str[i] < '0' || str[i] > '9' || letter != 0)
 			{
-				ft_putstr("Error");
 				count = -500;
 				return(-500);
 			}
@@ -86,7 +85,7 @@ int 	ft_options(char **tab)
 	}
 	return (count);
 }
-
+/*
 int		main(int ac, char **av)
 {
 	if (!ac)
@@ -94,3 +93,4 @@ int		main(int ac, char **av)
 	ft_putnbr(ft_options(av));
 	return(0);
 }
+*/
