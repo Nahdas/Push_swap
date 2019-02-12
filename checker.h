@@ -49,4 +49,8 @@ int                     push(t_pile **lst, t_pile **lst_b);
 
 void                    ft_del_first(t_pile **alst);
 
+int						rotate(t_pile **lst);
+
+int     				rev_rotate(t_pile **lst);
+
 #endif

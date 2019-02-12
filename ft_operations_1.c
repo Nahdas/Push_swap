@@ -35,6 +35,45 @@ int    swap(t_pile **lst)
         return (0);
 }
 
+int     rev_rotate(t_pile **lst)
+{
+    t_pile *tmp;
+    t_pile *last;
+
+    if (*lst && (*lst)->next != NULL)
+    {
+        tmp = (*lst);
+        while ((tmp->next)->next != NULL)
+            tmp = tmp->next;
+        last = tmp->next;
+        last->next = (*lst);
+        tmp->next = NULL;
+        (*lst) = last;
+        return(1);
+    }
+    else
+        return(0);
+} 
+
+int     rotate(t_pile **lst)
+{
+    t_pile *tmp;
+
+    if (*lst && (*lst)->next != NULL)
+    {
+        tmp = (*lst);
+        while (tmp->next != NULL)
+            tmp = tmp->next;
+        tmp->next = (*lst);
+        tmp = (*lst)->next;
+        (*lst)->next = NULL;
+        (*lst) = tmp;
+        return(1);
+    }
+    else
+        return(0);
+} 
+
 int     push(t_pile **lst, t_pile **lst_b)
 {
     int a;
@@ -44,9 +83,9 @@ int     push(t_pile **lst, t_pile **lst_b)
     if (*lst_b)
     {
         head = (*lst_b);
+        (*lst_b) = head->next;
         head->next = *lst;
         *lst = head;
-        ft_del_first(lst_b);
         return (1);
     }
     return(0);

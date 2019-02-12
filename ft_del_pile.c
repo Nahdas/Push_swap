@@ -11,12 +11,3 @@
 /* ************************************************************************** */
 
 #include "checker.h"
-
-void     ft_del_first(t_pile **alst)
-{
-    t_pile *tmp;
-
-    tmp = (*alst);
-    (*alst) = (*alst)->next;
-    free (tmp);
-}

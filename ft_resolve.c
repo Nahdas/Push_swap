@@ -15,7 +15,7 @@
 int         ft_swap(t_pile **lst, t_list **inst, t_pile **lst_b)
 {
     int res;
-    
+
     res = 0;
     if (ft_strcmp("sa", (*inst)->content) == 0)
         res += swap(lst);
@@ -23,8 +23,9 @@ int         ft_swap(t_pile **lst, t_list **inst, t_pile **lst_b)
         res += swap(lst_b);
     if (ft_strcmp("ss", (*inst)->content) == 0)
     {
-        res += swap(lst);
-        res += swap(lst_b);
+        swap(lst);
+        swap(lst_b);
+        return (1);
     }
     return (res);
 }
@@ -40,39 +41,48 @@ int         ft_push(t_pile **lst, t_list **inst, t_pile **lst_b)
         res += push(lst_b, lst);
     return(res);
 }
-/*
+
 int         ft_rotate(t_pile **lst, t_list **inst, t_pile **lst_b)
 {
     int res;
 
     res = 0;
     if (ft_strcmp("ra", (*inst)->content) == 0)
-        res = rotate(lst, lst_b);
+        res += rotate(lst);
     if (ft_strcmp("rb", (*inst)->content) == 0)
-        res = rotate(lst, lst_b);
+        res += rotate(lst_b);
     if (ft_strcmp("rr", (*inst)->content) == 0)
-        res = rotate(lst, lst_b);
+    {
+        rotate(lst);
+        rotate(lst_b);
+        return (1);
+    }
     if (ft_strcmp("rra", (*inst)->content) == 0)
-        res = rev_rotate(lst, lst_b);
+        res += rev_rotate(lst);
     if (ft_strcmp("rrb", (*inst)->content) == 0)
-        res = rev_rotate(lst, lst_b);
+        res += rev_rotate(lst_b);
     if (ft_strcmp("rrr", (*inst)->content) == 0)
-        res = rev_rotate(lst, lst_b);
+    {
+        rev_rotate(lst);
+        rev_rotate(lst_b);
+        return (1);
+    }
     return (res);
 }
-*/
+
 void        ft_resolve(t_pile **lst, t_list **inst)
 {
     t_pile *lst_b;
     int res;
 
     lst_b = NULL;
+    res = 0;
     while (*inst)
     {
         res += ft_swap(lst, inst, &lst_b);
         res += ft_push(lst, inst, &lst_b);
-  //      res += ft_rotate(lst, inst, &lst_b);
-        if (res < -1)
+        res += ft_rotate(lst, inst, &lst_b);
+        if (res != 1)
         {
             ft_putstr("Error\n");
             return;
