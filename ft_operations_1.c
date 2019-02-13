@@ -12,6 +12,21 @@
 
 #include "checker.h"
 
+int     ft_is_sort(t_pile **lst)
+{
+    t_pile *tmp;
+
+    tmp = (*lst)->next;
+    while (tmp->next != NULL)
+    {
+        if (tmp->content < (*lst)->content)
+            return (0);
+        (*lst) = tmp;
+        tmp = tmp->next;
+    }
+    return (1);
+}
+
 int    swap(t_pile **lst)
 {
     int a;

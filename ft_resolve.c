@@ -74,6 +74,7 @@ void        ft_resolve(t_pile **lst, t_list **inst)
 {
     t_pile *lst_b;
     int res;
+    t_pile *mem;
 
     lst_b = NULL;
     res = 0;
@@ -91,11 +92,13 @@ void        ft_resolve(t_pile **lst, t_list **inst)
         res = 0;
     }
     dprintf(2, "PILE A :\n");
+    mem = (*lst);
     while (*lst)
     {
         ft_printf("%d\n", (*lst)->content);
         *lst = (*lst)->next;
     }
+    (*lst) = mem;
     dprintf(2, "PILE B :\n");
     while (lst_b != NULL)
     {

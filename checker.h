@@ -25,6 +25,8 @@ struct					s_pile
 };
 typedef struct s_pile	t_pile;
 
+int     				ft_check_list(t_pile *lst);
+
 void			        ft_lst_push(t_list **alst, t_list *news);
 
 long long               ft_long_atoi(const char *str);
@@ -52,5 +54,7 @@ void                    ft_del_first(t_pile **alst);
 int						rotate(t_pile **lst);
 
 int     				rev_rotate(t_pile **lst);
+
+int     				ft_is_sort(t_pile **lst);
 
 #endif

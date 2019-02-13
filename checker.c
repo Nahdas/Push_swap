@@ -87,6 +87,8 @@ int		ft_is_valid(char **argv, int opt)
 	i = ft_offset(argv, opt);
 	while (argv[i])
 	{
+		if (ft_strcmp(argv[i], "") == 0)
+			return (-1);
 		while (argv[i][j])
 		{
 			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != '-' && argv[i][j] !='+')
@@ -104,8 +106,6 @@ int		ft_is_valid(char **argv, int opt)
 	return (opt);
 }
 
-
- 
 int		main(int argc, char **argv)
 {
 	t_pile *lst;
@@ -120,22 +120,16 @@ int		main(int argc, char **argv)
 	if (opt < 0)
 		return (0);
 	lst = ft_to_list(argv, &lst, opt);
-//	while (lst)
-//	{
-//		ft_printf("%d ", lst->content);
-//		lst = lst->next;
-//	}
-//	ft_putchar('\n');
+	if (!ft_check_list(lst))
+		return (0);
 	while (get_next_line(1, &line))
 	{
 		ft_to_inst(&inst, line);
 	}
-//	while (inst)
-//	{
-//		ft_printf("%s ", inst->content);
-//		inst = inst->next;
-//	}
-//	ft_putchar('\n');
 	ft_resolve(&lst, &inst);
+	if (ft_is_sort(&lst))
+		ft_putstr("OK\n");
+	else
+		ft_putstr("K0\n");
 	return (0);
 } 
