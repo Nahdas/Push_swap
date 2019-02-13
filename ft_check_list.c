@@ -15,7 +15,7 @@ int     ft_check_list(t_pile *lst)
         {
             if (lst->content == first->content && lst != first)
             {
-                ft_putstr("ieError\n");
+                ft_putstr("Error\n");
                 return(0);
             }
             first = first->next;
