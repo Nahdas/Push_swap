@@ -12,11 +12,15 @@
 
 #include "checker.h"
 
-int     ft_is_sort(t_pile **lst)
+int     ft_is_sort(t_pile **lst, t_pile **lst_b)
 {
     t_pile *tmp;
-
-    tmp = (*lst)->next;
+    if ((*lst_b))
+        return (0);
+    if ((*lst)->next != NULL)
+        tmp = (*lst)->next;
+    else
+        tmp = (*lst);
     while (tmp->next != NULL)
     {
         if (tmp->content < (*lst)->content)
@@ -33,7 +37,7 @@ int    swap(t_pile **lst)
     int b;
     t_pile *tmp;
     if (!(*lst) || (*lst) == NULL)
-        return (0);
+        return (1);
     if ((*lst)->next != NULL)
     {
 
@@ -47,7 +51,7 @@ int    swap(t_pile **lst)
         return (1);
     }
     else
-        return (0);
+        return (1);
 }
 
 int     rev_rotate(t_pile **lst)
@@ -67,7 +71,7 @@ int     rev_rotate(t_pile **lst)
         return(1);
     }
     else
-        return(0);
+        return(1);
 } 
 
 int     rotate(t_pile **lst)
@@ -86,7 +90,7 @@ int     rotate(t_pile **lst)
         return(1);
     }
     else
-        return(0);
+        return(1);
 } 
 
 int     push(t_pile **lst, t_pile **lst_b)
@@ -103,5 +107,5 @@ int     push(t_pile **lst, t_pile **lst_b)
         *lst = head;
         return (1);
     }
-    return(0);
+    return(1);
 }

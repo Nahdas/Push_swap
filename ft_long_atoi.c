@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:07:55 by alac              #+#    #+#             */
-/*   Updated: 2019/02/08 12:15:12 by alac             ###   ########.fr       */
+/*   Updated: 2019/02/14 17:10:54 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ t_pile			*ft_pile_new(const int	content, size_t content_size)
 		return (tmp);
 	}
 }
+
 
 long long		ft_long_atoi(const char *str)
 {

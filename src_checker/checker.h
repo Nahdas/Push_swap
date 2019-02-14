@@ -13,7 +13,7 @@
 #ifndef CHECKER_H
 # define CHECKER_H
 
-# include "libft/ft_printf.h"
+# include "../libft/ft_printf.h"
 # include <stdlib.h>
 # include <stdio.h>
 
@@ -43,7 +43,7 @@ int 	                ft_prealable(char **argv);
 
 int		                ft_is_valid(char **argv, int opt);
 
-void                    ft_resolve(t_pile **lst, t_list **inst);
+int                     ft_resolve(t_pile **lst_b, t_pile **lst, int opt, char **line);
 
 int                     swap(t_pile **lst);
 
@@ -55,6 +55,6 @@ int						rotate(t_pile **lst);
 
 int     				rev_rotate(t_pile **lst);
 
-int     				ft_is_sort(t_pile **lst);
+int     				ft_is_sort(t_pile **lst, t_pile **lst_b);
 
 #endif

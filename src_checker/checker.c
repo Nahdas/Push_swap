@@ -12,6 +12,7 @@
 
 #include "checker.h"
 
+
 t_list	*ft_to_inst(t_list **inst, char *line)
 {
 	t_list *head;
@@ -41,7 +42,10 @@ t_pile 	*ft_to_list(char **argv, t_pile **lst, int opt)
 	{
 		nb = ft_long_atoi(argv[i]);
 		if (nb < -2147483648 || nb > 2147483647)
-			return (0);
+		{
+			ft_putstr("Error\n");
+			return (NULL);
+		}
 		else
 		{
 			if (!(*lst))
@@ -109,7 +113,7 @@ int		ft_is_valid(char **argv, int opt)
 int		main(int argc, char **argv)
 {
 	t_pile *lst;
-	t_list *inst;
+	t_pile *lst_b;
 	int opt;
 	char *line;
 
@@ -119,17 +123,14 @@ int		main(int argc, char **argv)
 	opt = ft_prealable(argv);
 	if (opt < 0)
 		return (0);
-	lst = ft_to_list(argv, &lst, opt);
+	if (!(lst = ft_to_list(argv, &lst, opt)) && lst == NULL)
+		return (0);
 	if (!ft_check_list(lst))
 		return (0);
-	while (get_next_line(1, &line))
-	{
-		ft_to_inst(&inst, line);
-	}
-	ft_resolve(&lst, &inst);
-	if (ft_is_sort(&lst))
+	opt = ft_resolve(&lst, &lst_b, opt, &line);
+	if (ft_is_sort(&lst, &lst_b) && opt == 1)
 		ft_putstr("OK\n");
-	else
+	else if (opt == 1)
 		ft_putstr("K0\n");
 	return (0);
 } 
