@@ -25,6 +25,8 @@ struct					s_pile
 };
 typedef struct s_pile	t_pile;
 
+t_pile 					*ft_to_list(char **argv, t_pile **lst, int opt);
+
 int     				ft_check_list(t_pile *lst);
 
 void			        ft_lst_push(t_list **alst, t_list *news);

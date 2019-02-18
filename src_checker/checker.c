@@ -109,7 +109,7 @@ int		ft_is_valid(char **argv, int opt)
 	}
 	return (opt);
 }
-
+/*
 int		main(int argc, char **argv)
 {
 	t_pile *lst;
@@ -133,4 +133,5 @@ int		main(int argc, char **argv)
 	else if (opt == 1)
 		ft_putstr("K0\n");
 	return (0);
-} 
+}
+*/
