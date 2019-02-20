@@ -133,5 +133,4 @@ int		main(int argc, char **argv)
 	else if (opt == 1)
 		ft_putstr("K0\n");
 	return (0);
-}
-*/
+}*/
