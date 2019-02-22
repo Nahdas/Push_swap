@@ -48,7 +48,6 @@ int     ft_assemble(t_pile **lst, t_pile **lst_b)
     while (i < size)
     {
         ft_push_operations("pa", lst, lst_b);
-        //push(lst, lst_b);
         i++;
     }
     return(0);

@@ -42,4 +42,6 @@ int     ft_rot_operations(char *op, t_pile **lst_a, t_pile **lst_b);
 
 int     ft_rev_rot_operations(char *op, t_pile **lst_a, t_pile **lst_b);
 
+int     ft_partition_A(t_pile **lst_a, t_pile **lst_b, int len, int med);
+
 #endif

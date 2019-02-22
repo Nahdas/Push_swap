@@ -25,34 +25,23 @@ int     ft_partition_A(t_pile **lst_a, t_pile **lst_b, int len, int med)
     ras = 0;
     while (i < len)
     {
-        //dprintf(2, "a\n");
         if (head && head->content < med && j == 0)
         {
-           // dprintf(2, "a'\n");
             ft_push_operations("pb", &head, lst_b);
-            //push(lst_b, &head);
             j++;
         }
-        //dprintf(2, "b\n");
         if (head && head->content > med && j == 0)
         {
-            //dprintf(2, "b'\n");
             ft_rot_operations("ra", &head, lst_b);
-            //rotate(&head);
             ras++;
             j++;
         }
-        //dprintf(2, "c\n");
         if (head && head->content == med && j == 0)
         {
-            //dprintf(2, "c'\n");
             ft_push_operations("pb", &head, lst_b);
             ft_rot_operations("rb", &head, lst_b);
-            //push(lst_b, &head);
-            //rotate(lst_b);
             j++;
         }
-        //dprintf(2, "d\n");
         i++;
         j = 0;
         /*ft_printf("ras: %d, med :%d, len: %d i :%d\n", ras, med, len, i);
@@ -62,9 +51,7 @@ int     ft_partition_A(t_pile **lst_a, t_pile **lst_b, int len, int med)
         ft_print_list(*lst_b);
         getchar();*/
     }
-    //dprintf(2 ,"e\n");
     ft_rev_rot_operations("rrb", &head, lst_b);
-    //rev_rotate(lst_b);
     *lst_a = head;
     return(ras);
 }
@@ -80,7 +67,6 @@ int     ft_two_sorted(t_pile **lst, int order)
         swap(lst);
     else if (next != NULL && next->content > (*lst)->content && order == -1)
         swap(lst);
-    //ft_printf("SORTED\n");
     return(1);
     
 }
@@ -109,7 +95,6 @@ int     ft_quick_sort_A(t_pile **lst_a, t_pile **lst_b, int len, int how)
     while (ras > 0)
     {
         ft_rev_rot_operations("rra", lst_a, lst_b);
-        //rev_rotate(lst_a);
         ras--;
         /*ft_printf("\nPUTTING IT BACK \n ras is %d \n List_a dans qsA-ras loop\n", ras);
         ft_print_list(*lst_a);
@@ -124,7 +109,6 @@ int     ft_quick_sort_A(t_pile **lst_a, t_pile **lst_b, int len, int how)
     {
 
         ft_push_operations("pa", lst_a, lst_b);
-        //push(lst_a, lst_b);
         pbs--;
         /*ft_printf("\nPUTTING IT BACK \n pbs is %d \n List_a dans qsA-pbs loop\n", pbs);
         ft_print_list(*lst_a);

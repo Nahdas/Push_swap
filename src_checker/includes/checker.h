@@ -25,11 +25,13 @@ struct					s_pile
 };
 typedef struct s_pile	t_pile;
 
+t_list					*ft_to_inst(t_list **inst, char *line);
+
 t_pile 					*ft_to_list(char **argv, t_pile **lst, int opt);
 
 int     				ft_check_list(t_pile *lst);
 
-void			        ft_lst_push(t_list **alst, t_list *news);
+void			        ft_lst_add(t_list **alst, t_list *news);
 
 long long               ft_long_atoi(const char *str);
 

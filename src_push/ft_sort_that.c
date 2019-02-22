@@ -109,29 +109,11 @@ int     ft_sort_that(t_pile **lst_a, t_pile **lst_b)
 {
     int size;
     t_pile *head;
-    int i;
     int med;
 
     size = ft_get_size(*lst_a);
     head = *lst_a;
     med = ft_get_median(head, size);
-    while (head->content != med)
-        head = head->next;
-    while (head->next != NULL)
-        ft_rot_operations("ra", lst_a, lst_b);
-        //rotate(lst_a);
-    i = 1;
-    head = *lst_a;
-    while (i < size)
-    {
-        if (head->content < med)
-            ft_push_operations("pb", &head, lst_b);
-            //push(lst_b, &head);
-        else
-            ft_rot_operations("ra", &head, lst_b);
-            //rotate(&head);
-        i++;
-    }
-    *lst_a = head;
+    ft_partition_A(lst_a, lst_b, size, med);
     return (1);
 }

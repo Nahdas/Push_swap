@@ -12,7 +12,6 @@
 
 #include "includes/checker.h"
 
-
 t_list	*ft_to_inst(t_list **inst, char *line)
 {
 	t_list *head;
@@ -25,7 +24,7 @@ t_list	*ft_to_inst(t_list **inst, char *line)
 	else
 	{
 		head = ft_lstnew(line, ft_strlen(line));
-		ft_lst_push(inst, head);	
+		ft_lst_add(inst, head);	
 	}
 	return (*inst);
 }

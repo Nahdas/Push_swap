@@ -25,7 +25,7 @@ int 	ft_prealable(char **argv)
 	return (opt);
 }
 
-void			ft_lst_push(t_list **alst, t_list *news)
+void			ft_lst_add(t_list **alst, t_list *news)
 {
 	if (alst && news)
 	{
