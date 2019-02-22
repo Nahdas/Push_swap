@@ -10,23 +10,35 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = make_all
+NAME = ../checker
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+INCLUDES =  -I ./includes/ 
+
+SRC = ../ft_long_atoi.c\
+	  ../ft_operations_1.c\
+
+SRC_CHECK =	checker.c\
+	  	    ft_check_list.c\
+	  		ft_options.c\
+	  		ft_resolve.c\
+			main_checker.c
+
+OBJ_CHECK = $(SRC_CHECK:.c=.o)
+
+OBJ = 		ft_long_atoi.o\
+	  		ft_operations_1.o
 
 all : $(NAME)
 
 $(NAME) :
-	make -C ./libft
-	make -C ./src_checker
-	make -C ./src_push
+	$(CC) $(CFLAGS) -c $(INCLUDES) $(SRC) $(SRC_CHECK)
+	$(CC) $(OBJ) $(OBJ_CHECK) -o $(NAME) ../libft/libftprintf.a 
 
 fclean : clean
-	make fclean -C ./libft
-	make fclean -C ./src_checker
-	make fclean -C ./src_push
+	rm -f $(NAME)
 
 clean :
-	make clean -C ./libft
-	make clean -C ./src_checker
-	make clean -C ./src_push
+	rm -f $(OBJ) $(OBJ_CHECK)
 
 re : fclean all

@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 13:33:42 by alac              #+#    #+#             */
-/*   Updated: 2019/02/08 11:18:37 by alac             ###   ########.fr       */
+/*   Updated: 2019/02/22 14:55:57 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "libft.h"
 # include <fcntl.h>
 
-# define BUFF_SIZE 200
+# define BUFF_SIZE 10
 
 int					get_next_line(const int fd, char **line);
 

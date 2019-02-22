@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "includes/ft_push_swap.h"
 
 void        ft_copy_list(t_pile *lst, t_pile **copy, int len)
 {
@@ -118,15 +118,18 @@ int     ft_sort_that(t_pile **lst_a, t_pile **lst_b)
     while (head->content != med)
         head = head->next;
     while (head->next != NULL)
-        rotate(lst_a);
+        ft_rot_operations("ra", lst_a, lst_b);
+        //rotate(lst_a);
     i = 1;
     head = *lst_a;
     while (i < size)
     {
         if (head->content < med)
-            push(lst_b, &head);
+            ft_push_operations("pb", &head, lst_b);
+            //push(lst_b, &head);
         else
-            rotate(&head);
+            ft_rot_operations("ra", &head, lst_b);
+            //rotate(&head);
         i++;
     }
     *lst_a = head;

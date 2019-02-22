@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "includes/checker.h"
 
 int         ft_swap(t_pile **lst, char *line, t_pile **lst_b)
 {
@@ -96,7 +96,7 @@ int          ft_resolve(t_pile **lst, t_pile **lst_b, int opt, char **line)
     int res;
 
     res = 0;
-    while (get_next_line(1, line))
+    while (get_next_line(0, line))
 	{
         res += ft_swap(lst, *line, lst_b);
         res += ft_push(lst, *line, lst_b);

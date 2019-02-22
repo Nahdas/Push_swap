@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "includes/checker.h"
 
 int		ft_add(int x)
 {
@@ -85,12 +85,3 @@ int 	ft_options(char **tab)
 	}
 	return (count);
 }
-/*
-int		main(int ac, char **av)
-{
-	if (!ac)
-		return (0);
-	ft_putnbr(ft_options(av));
-	return(0);
-}
-*/

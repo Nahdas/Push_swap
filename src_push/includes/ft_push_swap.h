@@ -14,7 +14,7 @@
 #ifndef FT_PUSH_SWAP_H
 # define FT_PUSH_SWAP_H
 
-# include "../src_checker/checker.h"
+# include "../../src_checker/includes/checker.h"
 
 int     ft_sort_that(t_pile **lst_a, t_pile **lst_b);
 
@@ -40,6 +40,6 @@ int     ft_push_operations(char *op, t_pile **lst_a, t_pile **lst_b);
 
 int     ft_rot_operations(char *op, t_pile **lst_a, t_pile **lst_b);
 
-int     fr_rev_rot_operations(char *op, t_pile **lst_a, t_pile **lst_b);
+int     ft_rev_rot_operations(char *op, t_pile **lst_a, t_pile **lst_b);
 
 #endif

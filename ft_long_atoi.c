@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "src_checker/checker.h"
+#include "src_checker/includes/checker.h"
 
 int 	ft_prealable(char **argv)
 {

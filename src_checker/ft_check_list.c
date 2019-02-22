@@ -1,6 +1,6 @@
 
 
-#include "checker.h"
+#include "includes/checker.h"
 
 int     ft_check_list(t_pile *lst)
 {

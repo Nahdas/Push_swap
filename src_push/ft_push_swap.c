@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "includes/ft_push_swap.h"
 
 void    ft_del_list(t_pile **lst)
 {
@@ -47,7 +47,8 @@ int     ft_assemble(t_pile **lst, t_pile **lst_b)
     size = ft_get_size(*lst_b);
     while (i < size)
     {
-        push(lst, lst_b);
+        ft_push_operations("pa", lst, lst_b);
+        //push(lst, lst_b);
         i++;
     }
     return(0);
@@ -68,25 +69,32 @@ int     main(int argc, char **argv)
         return (0);
     if (!ft_check_list(lst))
         return (0);
-    ft_printf("\na la base \n");
+    /*ft_printf("\na la base avec une taille de %d\n", ft_get_size(lst));
     ft_print_list(lst);
+    getchar();*/
     ft_sort_that(&lst, &lst_b);
+    /*ft_printf("\napres premier tris avec une taille de %d\n", ft_get_size(lst));
+    ft_printf("\n A len:%d \n", ft_get_size(lst));
+    ft_print_list(lst);
+    ft_printf("\n B len:%d \n",ft_get_size(lst_b));
+    ft_print_list(lst_b);
+    getchar();*/
     ft_quick_sort_A(&lst, &lst_b, ft_get_size(lst), 1);
-    ft_printf("\n A AFTER FIRST STOP \n");
+    /*ft_printf("\n A AFTER FIRST STOP \n");
     ft_print_list(lst);
     ft_printf("\n B AFTER FIRST STOP \n");
     ft_print_list(lst_b);
-    getchar();
+    getchar();*/
     ft_quick_sort_B(&lst, &lst_b, ft_get_size(lst_b), -1);
-    ft_printf("\n A AFTER FIRST STOP \n");
+    /*ft_printf("\n A AFTER SECOND STOP \n");
     ft_print_list(lst);
-    ft_printf("\n B AFTER FIRST STOP \n");
+    ft_printf("\n B AFTER SECOND STOP \n");
     ft_print_list(lst_b);
-    getchar();
+    getchar();*/
     ft_assemble(&lst, &lst_b);
-    ft_printf("\na la fin la A \n");
+    /*ft_printf("\na la fin la A avec une taille de %d \n", ft_get_size(lst));
     ft_print_list(lst);
-    //ft_printf("\na la fin la B \n");
-    //ft_print_list(lst_b);
+    ft_printf("\na la fin la B \n");
+    ft_print_list(lst_b);*/
     return(1);
 }
