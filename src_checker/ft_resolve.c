@@ -94,8 +94,10 @@ void        ft_visu(t_pile *lst, t_pile *lst_b, int opt)
 int          ft_resolve(t_pile **lst, t_pile **lst_b, int opt, char **line)
 {
     int res;
+    int i;
 
     res = 0;
+    i = 0;
     while (get_next_line(0, line))
 	{
         res += ft_swap(lst, *line, lst_b);
@@ -103,12 +105,13 @@ int          ft_resolve(t_pile **lst, t_pile **lst_b, int opt, char **line)
         res += ft_rotate(lst, *line, lst_b);
         if (res != 1)
         {
-            ft_putstr("Error\n");
+            write(2,"Error\n", 6);
             return(0);
         }
         if (opt == 2)
             ft_visu(*lst, *lst_b, opt);
         res = 0;
+        i++;
     }
     return (1);
 }

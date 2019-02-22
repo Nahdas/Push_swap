@@ -105,7 +105,7 @@ int     ft_get_median(t_pile *lst, int len)
     return (res);
 }
 
-int     ft_sort_that(t_pile **lst_a, t_pile **lst_b)
+int     ft_sort_that(t_pile **lst_a, t_pile **lst_b, t_list **inst)
 {
     int size;
     t_pile *head;
@@ -114,6 +114,6 @@ int     ft_sort_that(t_pile **lst_a, t_pile **lst_b)
     size = ft_get_size(*lst_a);
     head = *lst_a;
     med = ft_get_median(head, size);
-    ft_partition_A(lst_a, lst_b, size, med);
+    ft_partition_A(lst_a, lst_b, size, med, inst);
     return (1);
 }

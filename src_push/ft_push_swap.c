@@ -38,7 +38,19 @@ void    ft_print_list(t_pile *lst)
     }
 }
 
-int     ft_assemble(t_pile **lst, t_pile **lst_b)
+void    ft_print_inst(t_list *inst)
+{
+    if (inst)
+    {
+        while (inst != NULL)
+        {
+            ft_printf("%s\n", inst->content);
+            inst = inst->next;
+        }
+    }
+}
+
+int     ft_assemble(t_pile **lst, t_pile **lst_b, t_list **inst)
 {
     int i;
     int size;
@@ -47,7 +59,7 @@ int     ft_assemble(t_pile **lst, t_pile **lst_b)
     size = ft_get_size(*lst_b);
     while (i < size)
     {
-        ft_push_operations("pa", lst, lst_b);
+        ft_push_operations("pa", lst, lst_b, inst);
         i++;
     }
     return(0);
@@ -57,6 +69,7 @@ int     main(int argc, char **argv)
 {
     t_pile *lst;
     t_pile *lst_b;
+    t_list *inst;
     int opt;
 
     if (argc < 2)
@@ -71,29 +84,32 @@ int     main(int argc, char **argv)
     /*ft_printf("\na la base avec une taille de %d\n", ft_get_size(lst));
     ft_print_list(lst);
     getchar();*/
-    ft_sort_that(&lst, &lst_b);
+    ft_sort_that(&lst, &lst_b, &inst);
     /*ft_printf("\napres premier tris avec une taille de %d\n", ft_get_size(lst));
     ft_printf("\n A len:%d \n", ft_get_size(lst));
     ft_print_list(lst);
     ft_printf("\n B len:%d \n",ft_get_size(lst_b));
     ft_print_list(lst_b);
     getchar();*/
-    ft_quick_sort_A(&lst, &lst_b, ft_get_size(lst), 1);
+    ft_quick_sort_A(&lst, &lst_b, ft_get_size(lst), &inst);
     /*ft_printf("\n A AFTER FIRST STOP \n");
     ft_print_list(lst);
     ft_printf("\n B AFTER FIRST STOP \n");
     ft_print_list(lst_b);
     getchar();*/
-    ft_quick_sort_B(&lst, &lst_b, ft_get_size(lst_b), -1);
+    ft_quick_sort_B(&lst, &lst_b, ft_get_size(lst_b), &inst);
     /*ft_printf("\n A AFTER SECOND STOP \n");
     ft_print_list(lst);
     ft_printf("\n B AFTER SECOND STOP \n");
     ft_print_list(lst_b);
     getchar();*/
-    ft_assemble(&lst, &lst_b);
+    ft_assemble(&lst, &lst_b, &inst);
     /*ft_printf("\na la fin la A avec une taille de %d \n", ft_get_size(lst));
     ft_print_list(lst);
     ft_printf("\na la fin la B \n");
     ft_print_list(lst_b);*/
+    opt = ft_double(&inst);
+    ft_print_inst(inst);
+    //ft_printf("double removed %d doubles\n", opt);
     return(1);
 }

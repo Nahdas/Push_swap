@@ -42,7 +42,7 @@ t_pile 	*ft_to_list(char **argv, t_pile **lst, int opt)
 		nb = ft_long_atoi(argv[i]);
 		if (nb < -2147483648 || nb > 2147483647)
 		{
-			ft_putstr("Error\n");
+			write(2,"Error\n", 6);
 			return (NULL);
 		}
 		else

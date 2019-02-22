@@ -13,7 +13,7 @@
 
 #include "includes/ft_push_swap.h"
 
-int     ft_partition_B(t_pile **lst_a, t_pile **lst_b, int len, int med)
+int     ft_partition_B(t_pile **lst_a, t_pile **lst_b, int len, int med, t_list **inst)
 {
     t_pile *head;
     int i;
@@ -28,19 +28,19 @@ int     ft_partition_B(t_pile **lst_a, t_pile **lst_b, int len, int med)
     {
         if (head && head->content > med && j == 0)
         {
-            ft_push_operations("pa", lst_a, &head);
+            ft_push_operations("pa", lst_a, &head, inst);
             j++;
         }
         if (head && head->content < med && j == 0)
         {
-            ft_rot_operations("rb", lst_a, &head);
+            ft_rot_operations("rb", lst_a, &head, inst);
             rbs++;
             j++;
         }
         if (head && head->content == med && j == 0)
         {
-            ft_push_operations("pa", lst_a, &head);
-            ft_rot_operations("ra", lst_a, &head);
+            ft_push_operations("pa", lst_a, &head, inst);
+            ft_rot_operations("ra", lst_a, &head, inst);
             j++;
         }
         i++;
@@ -52,12 +52,12 @@ int     ft_partition_B(t_pile **lst_a, t_pile **lst_b, int len, int med)
         ft_print_list(head);
         getchar();*/
     }
-    ft_rev_rot_operations("rra", lst_a, &head);
+    ft_rev_rot_operations("rra", lst_a, &head, inst);
     *lst_b = head;
     return(rbs);
 }
 
-int     ft_quick_sort_B(t_pile **lst_a, t_pile **lst_b, int len, int how)
+int     ft_quick_sort_B(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
 {
     /*ft_printf("\nList_a dans qsB avec len:%d\n", len);
     ft_print_list(*lst_a);
@@ -73,7 +73,7 @@ int     ft_quick_sort_B(t_pile **lst_a, t_pile **lst_b, int len, int how)
     if (len < 2)
         return(1);
     med = ft_get_median(*lst_b, len);
-    rbs = ft_partition_B(lst_a, lst_b, len, med);
+    rbs = ft_partition_B(lst_a, lst_b, len, med, inst);
     //dprintf(2, "DONE PARTITIONING len is %d\n", len);
    // dprintf(2, "rbs is :%d\n", rbs);
     pas = len - rbs;
@@ -81,7 +81,7 @@ int     ft_quick_sort_B(t_pile **lst_a, t_pile **lst_b, int len, int how)
     tmp = rbs;
     while (rbs > 0)
     {
-        ft_rev_rot_operations("rrb", lst_a, lst_b);
+        ft_rev_rot_operations("rrb", lst_a, lst_b, inst);
         rbs--;
         /*ft_printf("\nPUTTING IT BACK \n rbs is %d \nList_a dans qsB-rbs loop\n", rbs);
         ft_print_list(*lst_a);
@@ -90,8 +90,8 @@ int     ft_quick_sort_B(t_pile **lst_a, t_pile **lst_b, int len, int how)
         getchar();*/
     }
     rbs = tmp;
-    ft_quick_sort_B(lst_a, lst_b, rbs, how);
-    ft_quick_sort_A(lst_a, lst_b, pas, how);
+    ft_quick_sort_B(lst_a, lst_b, rbs, inst);
+    ft_quick_sort_A(lst_a, lst_b, pas, inst);
     while (pas > 0)
     {
         /*ft_printf("\nPUTTTING IT BACK\npas is %d\nList_a dans qsB-pas loop\n", pas);
@@ -99,7 +99,7 @@ int     ft_quick_sort_B(t_pile **lst_a, t_pile **lst_b, int len, int how)
         ft_printf("\nList_b dans qsB-pas loop\n");
         ft_print_list(*lst_b);
         getchar();*/
-        ft_push_operations("pb", lst_a, lst_b);
+        ft_push_operations("pb", lst_a, lst_b, inst);
         pas--;
     }
     return (0);

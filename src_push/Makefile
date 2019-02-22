@@ -26,7 +26,8 @@ SRC_PUSH = ft_algo_A.c\
 		   ft_algo_B.c\
 		   ft_push_swap.c\
 		   ft_sort_that.c\
-		   ft_operations_2.c
+		   ft_operations_2.c\
+		   ft_double.c
 
 OBJ_UP = ft_long_atoi.o\
 		 ft_operations_1.o

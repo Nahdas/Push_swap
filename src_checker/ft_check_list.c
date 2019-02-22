@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_check_list.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/22 18:04:31 by alac              #+#    #+#             */
+/*   Updated: 2019/02/22 18:04:46 by alac             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "includes/checker.h"
 
@@ -15,7 +25,7 @@ int     ft_check_list(t_pile *lst)
         {
             if (lst->content == first->content && lst != first)
             {
-                ft_putstr("Error\n");
+                write(2,"Error\n", 6);
                 return(0);
             }
             first = first->next;
