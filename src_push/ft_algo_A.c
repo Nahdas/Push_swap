@@ -82,9 +82,12 @@ int     ft_quick_sort_A(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
     int med;
     int ras;
     int pbs;
+    int quick = 0;
 
-    if (len < 2)
-        return(1);
+    //if (len < 2)
+     // return(1);
+    if (len <= 5)
+        return (ft_select_sort_A(lst_a, lst_b, len, inst));
     med = ft_get_median(*lst_a, len);
     ras = ft_partition_A(lst_a, lst_b, len, med, inst);
     //dprintf(2, "done partitioning \n ras is :%d\n", ras);
@@ -94,7 +97,18 @@ int     ft_quick_sort_A(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
     tmp = ras;
     while (ras > 0)
     {
-        ft_rev_rot_operations("rra", lst_a, lst_b, inst);
+        if (ras == ft_get_size(*lst_a))
+            break;
+        else if (ras > ft_get_size(*lst_a))
+            ras = ras - ft_get_size(*lst_a);
+        if (ras > ft_get_size(*lst_a) / 2 || quick == 1)
+        {
+            quick = 1;
+            ras = ft_get_size(*lst_a) - ras;
+            ft_rot_operations("ra", lst_a, lst_b, inst);
+        }
+        else
+            ft_rev_rot_operations("rra", lst_a, lst_b, inst);
         ras--;
         /*ft_printf("\nPUTTING IT BACK \n ras is %d \n List_a dans qsA-ras loop\n", ras);
         ft_print_list(*lst_a);

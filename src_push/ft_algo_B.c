@@ -69,9 +69,12 @@ int     ft_quick_sort_B(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
     int med;
     int rbs;
     int pas;
+    int quick = 0;
 
-    if (len < 2)
-        return(1);
+   // if (len < 2)
+    //   return(1);
+   if (len <= 5)
+       return (ft_select_sort_B(lst_a, lst_b, len, inst));
     med = ft_get_median(*lst_b, len);
     rbs = ft_partition_B(lst_a, lst_b, len, med, inst);
     //dprintf(2, "DONE PARTITIONING len is %d\n", len);
@@ -81,7 +84,18 @@ int     ft_quick_sort_B(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
     tmp = rbs;
     while (rbs > 0)
     {
-        ft_rev_rot_operations("rrb", lst_a, lst_b, inst);
+        if (rbs == ft_get_size(*lst_b))
+            break;
+        else if (rbs > ft_get_size(*lst_b))
+            rbs = rbs - ft_get_size(*lst_b);
+        if (rbs > ft_get_size(*lst_b) / 2 || quick == 1)
+        {
+            quick = 1;
+            rbs = ft_get_size(*lst_b) - rbs;
+            ft_rot_operations("rb", lst_a, lst_b, inst);
+        }
+        else 
+            ft_rev_rot_operations("rrb", lst_a, lst_b, inst);
         rbs--;
         /*ft_printf("\nPUTTING IT BACK \n rbs is %d \nList_a dans qsB-rbs loop\n", rbs);
         ft_print_list(*lst_a);

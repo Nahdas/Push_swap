@@ -104,12 +104,12 @@ int     main(int argc, char **argv)
     ft_print_list(lst_b);
     getchar();*/
     ft_assemble(&lst, &lst_b, &inst);
-    /*ft_printf("\na la fin la A avec une taille de %d \n", ft_get_size(lst));
-    ft_print_list(lst);
-    ft_printf("\na la fin la B \n");
-    ft_print_list(lst_b);*/
+   // ft_printf("\na la fin la A \n");
+   // ft_print_list(lst);
     opt = ft_double(&inst);
     ft_print_inst(inst);
+    //ft_printf("\na la fin la A avec une taille de %d \n", ft_get_size(lst));
+   // ft_print_list(lst);
     //ft_printf("double removed %d doubles\n", opt);
     return(1);
 }

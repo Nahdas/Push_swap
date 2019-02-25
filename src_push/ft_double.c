@@ -184,7 +184,7 @@ int     ft_double(t_list **inst)
     prev = NULL;
     follow = head->next;
     i += ft_ra_rra(&head, &prev, &follow, inst);
-        head = *inst;
+    head = *inst;
     prev = NULL;
     follow = head->next;
     i += ft_rb_rrb(&head, &prev, &follow, inst);
