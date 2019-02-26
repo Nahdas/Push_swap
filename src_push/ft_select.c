@@ -50,6 +50,47 @@ int     ft_get_max(t_pile *lst, int len)
     return(max);
 }
 
+int     ft_that_is_unsorted(t_pile *lst, int len)
+{
+    t_pile *tmp;
+    t_pile *copy;
+
+    ft_copy_list(lst, &copy, len);
+    if (copy->next != NULL)
+        tmp = copy->next;
+    else
+        tmp = NULL;
+    while (tmp != NULL)
+    {
+        if (tmp->content > copy->content)
+            return(0);
+        copy = tmp;
+        tmp = tmp->next;
+    }
+    ft_del_list(&copy);
+    return(1);
+}
+
+int     ft_that_is_sorted(t_pile *lst, int len)
+{
+    t_pile *tmp;
+    t_pile *copy;
+
+    ft_copy_list(lst, &copy, len);
+    if (copy->next != NULL)
+        tmp = copy->next;
+    else
+        tmp = NULL;
+    while (tmp != NULL)
+    {
+        if (tmp->content < copy->content)
+            return(0);
+        copy = tmp;
+        tmp = tmp->next;
+    }
+    ft_del_list(&copy);
+    return(1);
+}
 
 int     ft_select_sort_A(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
 {
@@ -57,8 +98,15 @@ int     ft_select_sort_A(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
     int ras;
     t_pile *node;
 
-    if (len <= 1)
+    if (len <= 1 || ft_that_is_sorted(*lst_a, len))
+    {
+        /*printf("AAA SORTED lst_a len :%d\n",len);
+        ft_print_list(*lst_a);
+        ft_printf("\nList_b\n");
+        ft_print_list(*lst_b);
+        getchar();*/
         return (1);
+    }
     min = ft_get_min(*lst_a, len);
     /*ft_printf("\nSelect Sort AAA Debut \n min is %d len is %d\nList_a\n", min, len);
     ft_print_list(*lst_a);
@@ -117,8 +165,15 @@ int     ft_select_sort_B(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
     int rbs;
     t_pile *node;
 
-    if (len <= 1)
-        return (1);
+    if (len <= 1 || ft_that_is_unsorted(*lst_b, len))
+    {
+        /*printf("BBB SORTED lst_a len :%d\n",len);
+        ft_print_list(*lst_a);
+        ft_printf("\nList_b\n");
+        ft_print_list(*lst_b);
+        getchar();*/
+        return(1);
+    }
     min = ft_get_max(*lst_b, len);
     /*ft_printf("\nSelect Sort BBB Debut \n min is %d len is %d\nList_a\n", min, len);
     ft_print_list(*lst_a);

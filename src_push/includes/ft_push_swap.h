@@ -36,6 +36,10 @@ int     ft_quick_sort_A(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst);
 
 int     ft_two_sorted(t_pile **lst, int order);
 
+int     ft_that_is_sorted(t_pile *lst, int len);
+
+int     ft_that_is_unsorted(t_pile *lst, int len);
+
 int     ft_swap_operations(char *op, t_pile **lst_a, t_pile **lst_b, t_list **inst);
 
 int     ft_push_operations(char *op, t_pile **lst_a, t_pile **lst_b, t_list **inst);

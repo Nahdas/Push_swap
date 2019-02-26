@@ -71,10 +71,12 @@ int     ft_quick_sort_B(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
     int pas;
     int quick = 0;
 
-   // if (len < 2)
+    //if (len < 2)
     //   return(1);
-   if (len <= 5)
-       return (ft_select_sort_B(lst_a, lst_b, len, inst));
+    if (ft_that_is_unsorted(*lst_b, len))
+        return(1);
+    if (len <= 5)
+       return (ft_simple_sort_B(lst_a, lst_b, len, inst));
     med = ft_get_median(*lst_b, len);
     rbs = ft_partition_B(lst_a, lst_b, len, med, inst);
     //dprintf(2, "DONE PARTITIONING len is %d\n", len);

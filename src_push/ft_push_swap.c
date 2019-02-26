@@ -109,7 +109,7 @@ int     main(int argc, char **argv)
     opt = ft_double(&inst);
     ft_print_inst(inst);
     //ft_printf("\na la fin la A avec une taille de %d \n", ft_get_size(lst));
-   // ft_print_list(lst);
+    //ft_print_list(lst);
     //ft_printf("double removed %d doubles\n", opt);
     return(1);
 }

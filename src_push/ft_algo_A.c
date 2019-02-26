@@ -85,9 +85,11 @@ int     ft_quick_sort_A(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
     int quick = 0;
 
     //if (len < 2)
-     // return(1);
+    //    return(1);
+    if (ft_that_is_sorted(*lst_a, len))
+        return(1);
     if (len <= 5)
-        return (ft_select_sort_A(lst_a, lst_b, len, inst));
+        return (ft_simple_sort_A(lst_a, lst_b, len, inst));
     med = ft_get_median(*lst_a, len);
     ras = ft_partition_A(lst_a, lst_b, len, med, inst);
     //dprintf(2, "done partitioning \n ras is :%d\n", ras);
