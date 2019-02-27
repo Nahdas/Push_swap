@@ -110,10 +110,15 @@ int     ft_sort_that(t_pile **lst_a, t_pile **lst_b, t_list **inst)
     int size;
     t_pile *head;
     int med;
-
     size = ft_get_size(*lst_a);
+    if (ft_that_is_sorted(*lst_a, size))
+        return(1);
+    if (size <= 5)
+        return(ft_simple_sort(lst_a, lst_b, size, inst));
+    //if (size <= 10)
+    //    return(ft_insert_sort_A(lst_a, lst_b, size, inst));
     head = *lst_a;
     med = ft_get_median(head, size);
     ft_partition_A(lst_a, lst_b, size, med, inst);
-    return (1);
+    return (0);
 }

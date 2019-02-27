@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -71,12 +70,12 @@ int     ft_quick_sort_B(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
     int pas;
     int quick = 0;
 
-    //if (len < 2)
-    //   return(1);
+    if (len < 2)
+       return(1);
     if (ft_that_is_unsorted(*lst_b, len))
         return(1);
-    if (len <= 5)
-       return (ft_simple_sort_B(lst_a, lst_b, len, inst));
+    //if (len <= 10)
+    //    return (ft_insert_sort_B(lst_a, lst_b, len, inst));
     med = ft_get_median(*lst_b, len);
     rbs = ft_partition_B(lst_a, lst_b, len, med, inst);
     //dprintf(2, "DONE PARTITIONING len is %d\n", len);
@@ -92,7 +91,8 @@ int     ft_quick_sort_B(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
             rbs = rbs - ft_get_size(*lst_b);
         if (rbs > ft_get_size(*lst_b) / 2 || quick == 1)
         {
-            quick = 1;
+            if (quick == 0)
+                rbs = ft_get_size(*lst_b) - rbs;
             rbs = ft_get_size(*lst_b) - rbs;
             ft_rot_operations("rb", lst_a, lst_b, inst);
         }
