@@ -15,6 +15,10 @@
 
 # include "../../src_checker/includes/checker.h"
 
+void	ft_print_inst(t_list *inst);
+
+int		ft_assemble(t_pile **lst, t_pile **lst_b, t_list **inst);
+
 int		ft_rot_a(t_pile **lst_a, t_pile **lst_b, t_list **inst, int *ras);
 
 int		ft_med_a(t_pile **lst_a, t_pile **lst_b, t_list **inst);

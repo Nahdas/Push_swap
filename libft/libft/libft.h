@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 10:27:06 by lmariott          #+#    #+#             */
-/*   Updated: 2019/02/08 11:44:55 by alac             ###   ########.fr       */
+/*   Updated: 2019/02/28 17:24:00 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void					*ft_memalloc(size_t size);
 void					ft_memdel(void **ap);
 char					*ft_strnew(size_t size);
 void					ft_strdel(char **as);
-void					ft_strclr(char *s);
+void					ft_strclr(char **s);
 void					ft_striter(char *s, void (*f)(char *));
 void					ft_striteri(char *s, void (*f)(unsigned int, char *));
 char					*ft_strmap(const char *s, char (*f)(char));

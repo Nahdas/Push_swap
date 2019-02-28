@@ -1,146 +1,91 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line4.c                                   :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 09:00:22 by alac              #+#    #+#             */
-/*   Updated: 2019/02/08 12:00:32 by alac             ###   ########.fr       */
+/*   Created: 2019/02/12 16:14:33 by alac              #+#    #+#             */
+/*   Updated: 2019/02/28 17:31:55 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char		*ft_realloc(char *ptr, size_t new_size)
+char	*ft_move(char **str)
 {
-	char	*new;
-	size_t	old_size;
-	size_t	i;
+	char	*end;
 
-	if (ptr != NULL)
-	{
-		old_size = ft_strlen(ptr);
-		new_size = new_size + old_size;
-	}
+	end = ft_strchr(*str, '\n') + 1;
+	free(*str);
+	*str = ft_strdup(end);
+	return (*str);
+}
+
+void	ft_strclr(char **str)
+{
+	int i;
+
 	i = 0;
-	if (!(new = (char *)malloc(sizeof(new) * (new_size + 1))))
-		return (NULL);
-	if (ptr != NULL)
+	if (*str)
 	{
-		while ((i <= old_size))
+		while (*str[i])
 		{
-			new[i] = ptr[i];
+			*str[i] = '\0';
 			i++;
 		}
-		ft_strdel(&ptr);
+		free(*str);
+		str = NULL;
 	}
-	while (i <= new_size)
-		new[i++] = '\0';
-	return (new);
 }
 
-static int		ft_buffer(char **buff, char **line)
+char	*ft_realloc(char *str, int old_size, int new_size)
 {
-	size_t	i;
-	char	*end;
-	char	*tmp;
+	char	*copy;
+	int		i;
 
 	i = 0;
-	if (*buff == NULL || ft_strcmp(*buff, "") == 0)
+	copy = (char *)malloc(sizeof(char) * (new_size + 1));
+	while (i < old_size)
 	{
-		*line = NULL;
-		return (-1);
+		copy[i] = str[i];
+		i++;
 	}
-	if ((end = ft_strchr(*buff, '\n')))
+	while (i <= new_size)
 	{
-		*line = ft_strcdup(*buff, '\n');
-		tmp = ft_strdup(ft_memmove(*buff, &end[1], ft_strlen(&end[1])));
-		tmp[ft_strlen(&end[1])] = '\0';
-		*buff = ft_strdup(tmp);
-		ft_strdel(&tmp);
-		return (1);
+		copy[i] = '\0';
+		i++;
 	}
-	*line = ft_strcdup(*buff, '\0');
-	ft_strdel(buff);
-	return (0);
+	if (str)
+		free(str);
+	return (copy);
 }
 
-static int		ft_read(const int fd, char **buff, char **str)
+int		get_next_line(const int fd, char **line)
 {
-	int		ret;
-	char	*end;
-	char	*tmp;
-
-	if (!(tmp = (char *)malloc(sizeof(char) * (BUFF_SIZE + 1))))
-		return (-1);
-	while ((ret = read(fd, tmp, BUFF_SIZE)) && ret >= 0)
-	{
-		tmp[ret] = '\0';
-		*str = ft_realloc(*str, ret);
-		*str = ft_strncat(*str, tmp, ret);
-		if ((end = ft_strchr(*str, '\n')))
-		{
-			tmp = (char *)ft_memmove(tmp, end + 1, ft_strlen(end + 1));
-			tmp[ft_strlen(end + 1)] = '\0';
-			*buff = ft_strcdup(tmp, '\0');
-			ft_strdel(&tmp);
-			return (ret);
-		}
-		if (ret < BUFF_SIZE)
-			return (ret);
-	}
-	return (ret);
-}
-
-static t_list	*ft_multiple_fd(t_list **lst, size_t fd)
-{
-	t_list *head;
-
-	if (!(*lst))
-	{
-		*lst = ft_lstnew(NULL, 0);
-		(*lst)->content_size = fd;
-		return (*lst);
-	}
-	head = *lst;
-	while (head)
-	{
-		if (head->content_size == fd)
-			return (head);
-		head = head->next;
-	}
-	head = ft_lstnew(NULL, 0);
-	head->content_size = fd;
-	ft_lstadd(lst, head);
-	return (head);
-}
-
-int				get_next_line(const int fd, char **line)
-{
+	char			buff[BUFF_SIZE + 1];
+	static char		*tmp;
 	int				ret;
-	char			*str;
-	static t_list	*lst;
-	t_list			*head;
+	int				i;
 
-	str = NULL;
-	ret = 0;
-	head = ft_multiple_fd(&lst, (size_t)fd);
-	if (line == NULL)
+	if (!line || fd < 0 || read(fd, buff, 0) < 0)
 		return (-1);
-	if (ft_buffer((char **)&head->content, line) == 1)
-		return (1);
-	ret = ft_read(fd, (char **)&head->content, &str);
-	if (ret == -1 || (ret == 0 && *line == NULL && str == NULL))
+	while ((ret = read(fd, buff, BUFF_SIZE)) && ret > 0)
 	{
-		ft_strdel((char **)&head->content);
-		return (ret);
+		buff[ret] = '\0';
+		i = ft_strlen(tmp);
+		if (!(tmp = ft_realloc(tmp, i, i + ret)))
+			return (-1);
+		tmp = ft_strcat(tmp, buff);
+		if (ft_strchr(tmp, '\n'))
+			break ;
 	}
-	if (str != NULL)
-	{
-		*line = ft_realloc(*line, ft_strclen(str, '\n'));
-		*line = ft_strncat(*line, ft_strcdup(str, '\n'), ft_strclen(str, '\n'));
-	}
-	ft_strdel(&str);
+	if (tmp[0] == '\0' && ret < BUFF_SIZE)
+		return (0);
+	*line = ft_strcdup(tmp, '\n');
+	if (ft_strchr(tmp, '\n'))
+		tmp = ft_move(&tmp);
+	else
+		ft_strclr(&tmp);
 	return (1);
 }

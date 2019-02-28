@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strcdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 17:05:02 by alac              #+#    #+#             */
-/*   Updated: 2019/02/28 17:12:04 by alac             ###   ########.fr       */
+/*   Created: 2018/11/19 12:57:45 by alac              #+#    #+#             */
+/*   Updated: 2018/11/23 13:46:04 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char		*ft_strchr(const char *str, int c)
+char	*ft_strcdup(const char *s1, const char c)
 {
-	int i;
+	int		len;
+	int		i;
+	char	*copy;
 
 	i = 0;
-	while (str[i])
+	len = ft_strclen(s1, c);
+	if (!(copy = (char *)malloc(sizeof(copy) * (len + 1))))
+		return (0);
+	while (i < len)
 	{
-		if (str[i] == c)
-			return ((char *)&str[i]);
+		copy[i] = s1[i];
 		i++;
 	}
-	if (c == '\0' && str[i] == '\0')
-		return ((char *)&str[i]);
-	else
-		return (NULL);
+	copy[i] = '\0';
+	return (copy);
 }

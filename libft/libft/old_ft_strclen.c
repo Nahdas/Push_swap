@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strclen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 17:05:02 by alac              #+#    #+#             */
-/*   Updated: 2019/02/28 17:12:04 by alac             ###   ########.fr       */
+/*   Created: 2018/11/16 17:11:00 by alac              #+#    #+#             */
+/*   Updated: 2018/12/03 16:31:49 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
-char		*ft_strchr(const char *str, int c)
+size_t		ft_strclen(const char *s, const char c)
 {
-	int i;
+	size_t i;
 
 	i = 0;
-	while (str[i])
+	while (s[i] != '\0' && s[i] != c)
 	{
-		if (str[i] == c)
-			return ((char *)&str[i]);
 		i++;
 	}
-	if (c == '\0' && str[i] == '\0')
-		return ((char *)&str[i]);
-	else
-		return (NULL);
+	if (c == '\0' && s[i] == '\0')
+		i++;
+	return (i);
 }

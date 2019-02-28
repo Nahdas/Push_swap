@@ -6,11 +6,13 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 15:19:23 by alac              #+#    #+#             */
-/*   Updated: 2019/02/28 15:19:27 by alac             ###   ########.fr       */
+/*   Updated: 2019/02/28 17:36:59 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/checker.h"
+
+void	ft_del_list(t_pile **lst);
 
 int		main(int argc, char **argv)
 {
@@ -35,5 +37,7 @@ int		main(int argc, char **argv)
 		ft_putstr("OK\n");
 	else if (opt == 1)
 		ft_putstr("K0\n");
+	ft_del_list(&lst);
+	while(1);
 	return (0);
 }

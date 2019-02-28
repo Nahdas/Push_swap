@@ -5,23 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 17:11:00 by alac              #+#    #+#             */
-/*   Updated: 2018/12/03 16:31:49 by alac             ###   ########.fr       */
+/*   Created: 2019/02/28 17:03:23 by alac              #+#    #+#             */
+/*   Updated: 2019/02/28 17:24:54 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-size_t		ft_strclen(const char *s, const char c)
+size_t		ft_strclen(const char *str, const char c)
 {
-	size_t i;
+	int i;
 
 	i = 0;
-	while (s[i] != '\0' && s[i] != c)
+	while (str[i] && str[i] != c)
 	{
 		i++;
 	}
-	if (c == '\0' && s[i] == '\0')
-		i++;
-	return (i);
+	return ((size_t)i);
 }
