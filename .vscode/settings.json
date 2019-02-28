@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "checker.h": "c"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

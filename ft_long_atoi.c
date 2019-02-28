@@ -6,20 +6,20 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:07:55 by alac              #+#    #+#             */
-/*   Updated: 2019/02/14 17:10:54 by alac             ###   ########.fr       */
+/*   Updated: 2019/02/28 10:55:56 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "src_checker/includes/checker.h"
 
-int 	ft_prealable(char **argv)
+int				ft_prealable(char **argv)
 {
 	int opt;
 
 	opt = ft_options(argv);
 	if (opt < 0)
 		return (opt);
-	opt = ft_is_valid(argv, opt);
+	opt = ft_is_valid(argv, opt, 0, 0);
 	if (opt < 0)
 		ft_putstr("Error\n");
 	return (opt);
@@ -27,10 +27,10 @@ int 	ft_prealable(char **argv)
 
 void			ft_lst_add(t_list **alst, t_list *news)
 {
+	t_list *current;
+
 	if (alst && news)
 	{
-		t_list *current;
-
 		current = *alst;
 		while (current->next != NULL)
 		{
@@ -42,10 +42,10 @@ void			ft_lst_add(t_list **alst, t_list *news)
 
 void			ft_pile_add(t_pile **alst, t_pile *news)
 {
+	t_pile *current;
+
 	if (alst && news)
 	{
-		t_pile *current;
-
 		current = *alst;
 		while (current->next != NULL)
 		{
@@ -55,7 +55,7 @@ void			ft_pile_add(t_pile **alst, t_pile *news)
 	}
 }
 
-t_pile			*ft_pile_new(const int	content, size_t content_size)
+t_pile			*ft_pile_new(const int content, size_t content_size)
 {
 	t_pile	*tmp;
 
@@ -79,11 +79,10 @@ t_pile			*ft_pile_new(const int	content, size_t content_size)
 	}
 }
 
-
 long long		ft_long_atoi(const char *str)
 {
 	long long	i;
-	long long 	tot;
+	long long	tot;
 	int			sign;
 
 	i = 0;

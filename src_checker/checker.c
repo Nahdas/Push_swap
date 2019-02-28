@@ -12,7 +12,7 @@
 
 #include "includes/checker.h"
 
-t_list	*ft_to_inst(t_list **inst, char *line)
+t_list		*ft_to_inst(t_list **inst, char *line)
 {
 	t_list *head;
 
@@ -24,16 +24,17 @@ t_list	*ft_to_inst(t_list **inst, char *line)
 	else
 	{
 		head = ft_lstnew(line, ft_strlen(line));
-		ft_lst_add(inst, head);	
+		ft_lst_add(inst, head);
 	}
 	return (*inst);
 }
 
-t_pile 	*ft_to_list(char **argv, t_pile **lst, int opt)
+t_pile		*ft_to_list(char **argv, t_pile **lst, int opt)
 {
-	int i;
-	long long nb;
-	t_pile *head;
+	int			i;
+	long long	nb;
+	t_pile		*head;
+
 	i = 1;
 	if (opt > 0)
 		i++;
@@ -41,17 +42,11 @@ t_pile 	*ft_to_list(char **argv, t_pile **lst, int opt)
 	{
 		nb = ft_long_atoi(argv[i]);
 		if (nb < -2147483648 || nb > 2147483647)
-		{
-			write(2,"Error\n", 6);
-			return (NULL);
-		}
+			return (ft_write_null());
 		else
 		{
 			if (!(*lst))
-			{
 				*lst = ft_pile_new(nb, 1);
-				head = *lst;
-			}
 			else
 			{
 				head = ft_pile_new(nb, 1);
@@ -63,7 +58,7 @@ t_pile 	*ft_to_list(char **argv, t_pile **lst, int opt)
 	return (*lst);
 }
 
-int		ft_offset(char **argv, int opt)
+int			ft_offset(char **argv, int opt)
 {
 	if (opt == 0)
 		return (1);
@@ -76,17 +71,13 @@ int		ft_offset(char **argv, int opt)
 		else
 			return (3);
 	}
-	return(1);
+	return (1);
 }
 
-int		ft_is_valid(char **argv, int opt)
+int			ft_is_valid(char **argv, int opt, int j, int sign)
 {
 	int i;
-	int j;
-	int sign;
 
-	j = 0;
-	sign = 0;
 	i = ft_offset(argv, opt);
 	while (argv[i])
 	{
@@ -94,7 +85,8 @@ int		ft_is_valid(char **argv, int opt)
 			return (-1);
 		while (argv[i][j])
 		{
-			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != '-' && argv[i][j] !='+')
+			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != '-'
+			&& argv[i][j] != '+')
 				return (-1);
 			if (argv[i][j] == '-' || argv[i][j] == '+')
 				sign++;

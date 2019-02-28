@@ -12,126 +12,96 @@
 
 #include "includes/ft_push_swap.h"
 
-int     ft_partition_A(t_pile **lst_a, t_pile **lst_b, int len, int med, t_list **inst)
+int		ft_partition_a(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
 {
-    t_pile *head;
-    int i;
-    int j;
-    int ras;
+	t_pile	*head;
+	int		i;
+	int		j;
+	int		ras;
+	int		med;
 
-    head = *lst_a;
-    i = 0;
-    j = 0;
-    ras = 0;
-    while (i < len)
-    {
-        if (head && head->content < med && j == 0)
-        {
-            ft_push_operations("pb", &head, lst_b, inst);
-            j++;
-        }
-        if (head && head->content > med && j == 0)
-        {
-            ft_rot_operations("ra", &head, lst_b, inst);
-            ras++;
-            j++;
-        }
-        if (head && head->content == med && j == 0)
-        {
-            ft_push_operations("pb", &head, lst_b, inst);
-            ft_rot_operations("rb", &head, lst_b, inst);
-            j++;
-        }
-        i++;
-        j = 0;
-        /*ft_printf("ras: %d, med :%d, len: %d i :%d\n", ras, med, len, i);
-        ft_printf("\nList_a dans qsA-partition\n");
-        ft_print_list(head);
-        ft_printf("\nList_b dans qsA-partition\n");
-        ft_print_list(*lst_b);
-        getchar();*/
-    }
-    ft_rev_rot_operations("rrb", &head, lst_b, inst);
-    *lst_a = head;
-    return(ras);
+	med = ft_get_median(*lst_a, len);
+	head = *lst_a;
+	i = 0;
+	j = 0;
+	ras = 0;
+	while (i < len)
+	{
+		if (head && head->content < med && j == 0)
+			j += ft_push_operations("pb", &head, lst_b, inst);
+		if (head && head->content > med && j == 0)
+			j += ft_rot_a(&head, lst_b, inst, &ras);
+		if (head && head->content == med && j == 0)
+			j += ft_med_a(&head, lst_b, inst);
+		i++;
+		j = 0;
+	}
+	ft_rev_rot_operations("rrb", &head, lst_b, inst);
+	*lst_a = head;
+	return (ras);
 }
 
-int     ft_two_sorted(t_pile **lst, int order)
+int		ft_two_sorted(t_pile **lst, int order)
 {
-    t_pile *next;
+	t_pile *next;
 
-    next = NULL;
-    if ((*lst)->next && (*lst)->next != NULL)
-        next = (*lst)->next;
-    if (next != NULL && next->content < (*lst)->content && order == 1)
-        swap(lst);
-    else if (next != NULL && next->content > (*lst)->content && order == -1)
-        swap(lst);
-    return(1);
-    
+	next = NULL;
+	if ((*lst)->next && (*lst)->next != NULL)
+		next = (*lst)->next;
+	if (next != NULL && next->content < (*lst)->content && order == 1)
+		swap(lst);
+	else if (next != NULL && next->content > (*lst)->content && order == -1)
+		swap(lst);
+	return (1);
 }
 
-int     ft_quick_sort_A(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
+void	ft_qs_putback_a(t_pile **lst_a, t_pile **lst_b, int ras, t_list **inst)
 {
-    /*ft_printf("\nList_a dans qsA\nlen is %d\n", len);
-    ft_print_list(*lst_a);
-    ft_printf("\nList_b dans qsA\n");
-    ft_print_list(*lst_b);
-    getchar();*/
-    int tmp;
-    int med;
-    int ras;
-    int pbs;
-    int quick = 0;
+	int quick;
 
-    if (len < 2)
-        return(1);
-    if (ft_that_is_sorted(*lst_a, len))
-        return(1);
-    //if (len <= 10)
-     //   return (ft_insert_sort_A(lst_a, lst_b, len, inst));
-    med = ft_get_median(*lst_a, len);
-    ras = ft_partition_A(lst_a, lst_b, len, med, inst);
-    //dprintf(2, "done partitioning \n ras is :%d\n", ras);
-    pbs = len - ras;
-    //dprintf(2, "pbs is :%d\n", pbs);
-    //dprintf(2, "len is :%d\n", len);
-    tmp = ras;
-    while (ras > 0)
-    {
-        if (ras == ft_get_size(*lst_a))
-            break;
-        else if (ras > ft_get_size(*lst_a))
-            ras = ras - ft_get_size(*lst_a);
-        if (ras > ft_get_size(*lst_a) / 2 || quick == 1)
-        {
-            if (quick == 0)
-                ras = ft_get_size(*lst_a) - ras;
-            ras = ft_get_size(*lst_a) - ras;
-            ft_rot_operations("ra", lst_a, lst_b, inst);
-        }
-        else
-            ft_rev_rot_operations("rra", lst_a, lst_b, inst);
-        ras--;
-        /*ft_printf("\nPUTTING IT BACK \n ras is %d \n List_a dans qsA-ras loop\n", ras);
-        ft_print_list(*lst_a);
-        ft_printf("\nList_b dans qsA-ras loop\n");
-        ft_print_list(*lst_b);
-        getchar();*/
-    }
-    ras = tmp;
-    ft_quick_sort_A(lst_a, lst_b, ras, inst);
-    ft_quick_sort_B(lst_a, lst_b, pbs, inst);
-    while (pbs > 0)
-    {
+	quick = 0;
+	while (ras > 0)
+	{
+		if (ras == ft_get_size(*lst_a))
+			break ;
+		else if (ras > ft_get_size(*lst_a))
+			ras = ras - ft_get_size(*lst_a);
+		if (ras > ft_get_size(*lst_a) / 2 || quick == 1)
+		{
+			if (quick == 0)
+				ras = ft_get_size(*lst_a) - ras;
+			ras = ft_get_size(*lst_a) - ras;
+			ft_rot_operations("ra", lst_a, lst_b, inst);
+		}
+		else
+			ft_rev_rot_operations("rra", lst_a, lst_b, inst);
+		ras--;
+	}
+}
 
-        ft_push_operations("pa", lst_a, lst_b, inst);
-        pbs--;
-        /*ft_printf("\nPUTTING IT BACK \n pbs is %d \n List_a dans qsA-pbs loop\n", pbs);
-        ft_print_list(*lst_a);
-        ft_printf("\nList_b dans qsA-rbs loop\n");
-        ft_print_list(*lst_b);
-        getchar();*/
-    }
-    return (0);
+int		ft_quick_sort_a(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
+{
+	int tmp;
+	int ras;
+	int pbs;
+	int quick;
+
+	quick = 0;
+	if (len < 2)
+		return (1);
+	if (ft_that_is_sorted(*lst_a, len))
+		return (1);
+	ras = ft_partition_a(lst_a, lst_b, len, inst);
+	pbs = len - ras;
+	tmp = ras;
+	ft_qs_putback_a(lst_a, lst_b, ras, inst);
+	ras = tmp;
+	ft_quick_sort_a(lst_a, lst_b, ras, inst);
+	ft_quick_sort_b(lst_a, lst_b, pbs, inst);
+	while (pbs > 0)
+	{
+		ft_push_operations("pa", lst_a, lst_b, inst);
+		pbs--;
+	}
+	return (0);
 }

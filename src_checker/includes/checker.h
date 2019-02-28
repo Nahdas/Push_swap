@@ -19,46 +19,50 @@
 
 struct					s_pile
 {
-	int 			content;
-	size_t			content_size;
-	struct s_pile	*next;
+	int					content;
+	size_t				content_size;
+	struct s_pile		*next;
 };
 typedef struct s_pile	t_pile;
 
 t_list					*ft_to_inst(t_list **inst, char *line);
 
-t_pile 					*ft_to_list(char **argv, t_pile **lst, int opt);
+t_pile					*ft_to_list(char **argv, t_pile **lst, int opt);
 
-int     				ft_check_list(t_pile *lst);
+int						ft_check_list(t_pile *lst);
 
-void			        ft_lst_add(t_list **alst, t_list *news);
+void					ft_lst_add(t_list **alst, t_list *news);
 
-long long               ft_long_atoi(const char *str);
+long long				ft_long_atoi(const char *str);
 
-int		                ft_printf(const char *format, ...);
+int						ft_printf(const char *format, ...);
 
-int 	                ft_options(char **tab);
+int						ft_options(char **tab);
 
-void			        ft_pile_add(t_pile **alst, t_pile *news);
+void					ft_pile_add(t_pile **alst, t_pile *news);
 
-t_pile		        	*ft_pile_new(const int	content, size_t content_size);
+t_pile					*ft_pile_new(const int	content,
+						size_t content_size);
 
-int 	                ft_prealable(char **argv);
+int						ft_prealable(char **argv);
 
-int		                ft_is_valid(char **argv, int opt);
+int						ft_is_valid(char **argv, int opt, int j, int sign);
 
-int                     ft_resolve(t_pile **lst_b, t_pile **lst, int opt, char **line);
+int						ft_resolve(t_pile **lst_b, t_pile **lst,
+						int opt, char **line);
 
-int                     swap(t_pile **lst);
+int						swap(t_pile **lst);
 
-int                     push(t_pile **lst, t_pile **lst_b);
+int						push(t_pile **lst, t_pile **lst_b);
 
-void                    ft_del_first(t_pile **alst);
+void					ft_del_first(t_pile **alst);
 
 int						rotate(t_pile **lst);
 
-int     				rev_rotate(t_pile **lst);
+int						rev_rotate(t_pile **lst);
 
-int     				ft_is_sort(t_pile **lst, t_pile **lst_b);
+int						ft_is_sort(t_pile **lst, t_pile **lst_b);
+
+void					*ft_write_null(void);
 
 #endif

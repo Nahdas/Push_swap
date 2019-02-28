@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_list.c                                    :+:      :+:    :+:   */
+/*   ft_algo_aux.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/22 18:04:31 by alac              #+#    #+#             */
-/*   Updated: 2019/02/22 18:04:46 by alac             ###   ########.fr       */
+/*   Created: 2019/02/28 14:02:02 by alac              #+#    #+#             */
+/*   Updated: 2019/02/28 14:02:10 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/checker.h"
+#include "includes/ft_push_swap.h"
 
-void	*ft_write_null(void)
+int		ft_rot_a(t_pile **lst_a, t_pile **lst_b, t_list **inst, int *ras)
 {
-	write(2, "Error\n", 6);
-	return (NULL);
+	ft_rot_operations("ra", lst_a, lst_b, inst);
+	(*ras)++;
+	return (1);
 }
 
-int		ft_check_list(t_pile *lst)
+int		ft_med_a(t_pile **lst_a, t_pile **lst_b, t_list **inst)
 {
-	t_pile	*first;
-	t_pile	*back;
-
-	first = lst;
-	back = lst;
-	while (lst->next != NULL)
-	{
-		while (first != NULL)
-		{
-			if (lst->content == first->content && lst != first)
-			{
-				write(2, "Error\n", 6);
-				return (0);
-			}
-			first = first->next;
-		}
-		first = back;
-		lst = lst->next;
-	}
+	ft_push_operations("pb", lst_a, lst_b, inst);
+	ft_rot_operations("rb", lst_a, lst_b, inst);
 	return (1);
 }

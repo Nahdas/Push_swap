@@ -23,7 +23,7 @@ int		ft_add(int x)
 	if (ind != 32 && ind != 13)
 	{
 		ft_putstr("options: c/v\n");
-		return(-500);
+		return (-500);
 	}
 	if (ind == 32)
 		tot++;
@@ -32,15 +32,11 @@ int		ft_add(int x)
 	return (tot);
 }
 
-int 	ft_is_opt(char *str)
+int		ft_is_opt(char *str, int count, int letter)
 {
 	int i;
-	int count;
-	int letter;
 
 	i = 1;
-	count = 0;
-	letter = 0;
 	while (str[i] && count >= 0)
 	{
 		if (str[i] > 122 || str[i] < 97)
@@ -48,10 +44,10 @@ int 	ft_is_opt(char *str)
 			if (str[i] < '0' || str[i] > '9' || letter != 0)
 			{
 				count = -500;
-				return(-500);
+				return (-500);
 			}
 			else if (letter == 0)
-				return(0);
+				return (0);
 		}
 		else
 		{
@@ -60,10 +56,10 @@ int 	ft_is_opt(char *str)
 		}
 		i++;
 	}
-	return(count);
+	return (count);
 }
 
-int 	ft_options(char **tab)
+int		ft_options(char **tab)
 {
 	int i;
 	int j;
@@ -77,7 +73,7 @@ int 	ft_options(char **tab)
 		while (tab[i][j] && count >= 0)
 		{
 			if (tab[i][j] == '-')
-				count = count + ft_is_opt(&tab[i][j]);
+				count = count + ft_is_opt(&tab[i][j], 0, 0);
 			j++;
 		}
 		j = 0;

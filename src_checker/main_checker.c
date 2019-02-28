@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_checker.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/28 15:19:23 by alac              #+#    #+#             */
+/*   Updated: 2019/02/28 15:19:27 by alac             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "includes/checker.h"
 
 int		main(int argc, char **argv)
 {
-	t_pile *lst;
-	t_pile *lst_b;
-	int opt;
-	char *line;
+	t_pile	*lst;
+	t_pile	*lst_b;
+	int		opt;
+	char	*line;
 
 	line = "";
 	if (argc < 2)
@@ -14,6 +25,7 @@ int		main(int argc, char **argv)
 	opt = ft_prealable(argv);
 	if (opt < 0)
 		return (0);
+	lst = NULL;
 	if (!(lst = ft_to_list(argv, &lst, opt)) && lst == NULL)
 		return (0);
 	if (!ft_check_list(lst))
