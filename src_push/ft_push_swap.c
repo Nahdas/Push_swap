@@ -14,17 +14,16 @@
 
 void		ft_del_list(t_pile **lst)
 {
-	t_pile *current;
-	t_pile *next;
+	t_pile *tmp;
 
-	current = *lst;
-	while (current != NULL)
+	while (*lst)
 	{
-		next = current->next;
-		free(current);
-		current = next;
+		tmp = *lst;
+		(*lst) = (*lst)->next;
+		free(tmp);
+		tmp = NULL;
 	}
-	*lst = NULL;
+	lst = NULL;
 }
 
 void		ft_print_list(t_pile *lst)

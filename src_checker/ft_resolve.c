@@ -111,6 +111,8 @@ int			ft_resolve(t_pile **lst, t_pile **lst_b, int opt, char **line)
 			ft_visu(*lst, *lst_b, opt);
 		res = 0;
 		i++;
+		ft_strdel(line);
 	}
+	line = NULL;
 	return (1);
 }
