@@ -6,7 +6,7 @@
 #    By: lmariott <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 09:31:53 by lmariott          #+#    #+#              #
-#    Updated: 2019/02/28 17:22:25 by alac             ###   ########.fr        #
+#    Updated: 2019/03/01 12:15:26 by alac             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC = ft_isalnum.c	ft_isprint.c	ft_memcpy.c	ft_strchr.c	ft_strlcat.c\
 	  ft_putstr_fd.c	ft_putendl_fd.c	ft_putnbr_fd.c\
 	  ft_lstnew.c	ft_lstdelone.c	ft_lstdel.c\
 	  ft_lstadd.c	ft_lstiter.c	ft_lstmap.c	ft_strclen.c\
-	  ft_sqrt.c	get_next_line.c ft_strcdup.c
+	  ft_sqrt.c	get_next_line.c ft_strcdup.c\
 
 OBJ = $(SRC:.c=.o)
 

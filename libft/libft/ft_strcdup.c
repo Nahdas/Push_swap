@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: ayguillo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 17:04:10 by alac              #+#    #+#             */
-/*   Updated: 2019/02/28 17:27:00 by alac             ###   ########.fr       */
+/*   Created: 2018/11/20 11:18:20 by ayguillo          #+#    #+#             */
+/*   Updated: 2019/03/01 11:49:56 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcdup(const char *str, const char c)
+char	*ft_strcdup(const char *s1, char c)
 {
-	int		len;
-	int		i;
-	char	*copy;
-
-	len = ft_strclen(str, c);
-	i = 0;
-	if (!(copy = (char *)malloc(sizeof(char) * (len + 1))))
+	char	*dup;
+	int		n;
+	
+	if (!s1)
 		return (NULL);
-	while (str[i] && str[i] != c)
+	if (!(dup = (char*)malloc(sizeof(char) * (ft_strclen(s1, c) + 1))))
+		return (0);
+	n = 0;
+	while (s1[n] && s1[n] != c)
 	{
-		copy[i] = str[i];
-		i++;
+		dup[n] = s1[n];
+		n++;
 	}
-	copy[i] = '\0';
-	return (copy);
+	dup[n] = '\0';
+	return (dup);
 }

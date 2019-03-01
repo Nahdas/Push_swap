@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 10:27:06 by lmariott          #+#    #+#             */
-/*   Updated: 2019/02/28 17:24:00 by alac             ###   ########.fr       */
+/*   Updated: 2019/03/01 12:15:42 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+# include <fcntl.h>
+
+# define BUFF_SIZE 1
 
 char					*ft_strcdup(const char *s1, const char c);
 int						ft_strcmp(const char *s1, const char *s2);
@@ -46,7 +49,6 @@ char					*ft_strrchr(const char *s, int c);
 
 int						ft_toupper(int c);
 int						ft_tolower(int c);
-
 void					ft_bzero(void *s, size_t n);
 void					*ft_memchr(const void *s, int c, size_t n);
 int						ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -59,7 +61,7 @@ void					*ft_memalloc(size_t size);
 void					ft_memdel(void **ap);
 char					*ft_strnew(size_t size);
 void					ft_strdel(char **as);
-void					ft_strclr(char **s);
+void					ft_strclr(char *s);
 void					ft_striter(char *s, void (*f)(char *));
 void					ft_striteri(char *s, void (*f)(unsigned int, char *));
 char					*ft_strmap(const char *s, char (*f)(char));

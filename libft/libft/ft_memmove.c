@@ -3,36 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ayguillo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 16:24:46 by lmariott          #+#    #+#             */
-/*   Updated: 2018/11/12 15:33:27 by lmariott         ###   ########.fr       */
+/*   Created: 2018/11/07 16:52:33 by ayguillo          #+#    #+#             */
+/*   Updated: 2019/03/01 11:49:00 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		*ft_memmove(void *dst, const void *src, size_t len)
+void			*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t	i;
-	char	*cop1;
-	char	*cop2;
+	char	*dst2;
+	char	*src2;
+	size_t	n;
 
-	i = -1;
-	cop1 = (char*)dst;
-	cop2 = (char*)src;
+	dst2 = (char*)dst;
+	src2 = (char*)src;
 	if (dst == src || len == 0)
 		return (dst);
-	if (dst < src)
-		while (++i < len)
-			cop1[i] = cop2[i];
-	else
+	if (dst2 < src2)
 	{
-		while (len > 0)
+		n = 0;
+		while (n < len)
 		{
-			cop1[len - 1] = cop2[len - 1];
-			len--;
+			dst2[n] = src2[n];
+			n++;
 		}
 	}
+	else
+		while (len > 0)
+		{
+			len--;
+			dst2[len] = src2[len];
+		}
 	return (dst);
 }

@@ -3,23 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strclen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: ayguillo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 17:03:23 by alac              #+#    #+#             */
-/*   Updated: 2019/02/28 17:24:54 by alac             ###   ########.fr       */
+/*   Created: 2018/11/16 15:46:04 by ayguillo          #+#    #+#             */
+/*   Updated: 2019/03/01 11:50:25 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t		ft_strclen(const char *str, const char c)
+int		ft_strclen(const char *s, const char c)
 {
 	int i;
 
 	i = 0;
-	while (str[i] && str[i] != c)
-	{
-		i++;
-	}
-	return ((size_t)i);
+	if (s)
+		while (s[i] && s[i] != c)
+			i++;
+	return (i);
 }
