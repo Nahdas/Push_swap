@@ -22,10 +22,14 @@ int			main(int argc, char **argv)
 		ft_quick_sort_b(&lst, &lst_b, ft_get_size(lst_b), &inst);
 		ft_assemble(&lst, &lst_b, &inst);
 	}
-	if (!inst)
-		return (1);
-	ft_double(&inst);
-	ft_print_inst(inst);
+	if (inst)
+	{
+		ft_double(&inst);
+		ft_print_inst(inst);
+	}
+	ft_del_list(&lst);
+	ft_del_list(&lst_b);
+	ft_del_inst(&inst);	
 	while (1);
 	return (1);
 }

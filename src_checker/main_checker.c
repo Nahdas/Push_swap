@@ -38,6 +38,7 @@ int		main(int argc, char **argv)
 	else if (opt == 1)
 		ft_putstr("K0\n");
 	ft_del_list(&lst);
+	ft_del_list(&lst_b);
 	while(1);
 	return (0);
 }

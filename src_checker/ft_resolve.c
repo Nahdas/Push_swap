@@ -113,6 +113,8 @@ int			ft_resolve(t_pile **lst, t_pile **lst_b, int opt, char **line)
 		i++;
 		ft_strdel(line);
 	}
+	if (*line )
+		free(*line);
 	line = NULL;
 	return (1);
 }

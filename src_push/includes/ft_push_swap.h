@@ -15,6 +15,8 @@
 
 # include "../../src_checker/includes/checker.h"
 
+void	ft_del_inst(t_list **lst);
+
 void	ft_print_inst(t_list *inst);
 
 int		ft_assemble(t_pile **lst, t_pile **lst_b, t_list **inst);

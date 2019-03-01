@@ -70,8 +70,8 @@ t_pile			*ft_pile_new(const int content, size_t content_size)
 	}
 	else
 	{
-		if (!(tmp->content = (int)malloc(content_size)))
-			return (NULL);
+		//if (!(tmp->content = (int)malloc(content_size)))
+		//	return (NULL);
 		tmp->content = content;
 		tmp->content_size = content_size;
 		tmp->next = NULL;

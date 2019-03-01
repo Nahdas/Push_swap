@@ -12,6 +12,20 @@
 
 #include "includes/ft_push_swap.h"
 
+void		ft_del_inst(t_list **lst)
+{
+	t_list *tmp;
+
+	while (*lst)
+	{
+		tmp = *lst;
+		(*lst) = (*lst)->next;
+		free(tmp);
+		tmp = NULL;
+	}
+	lst = NULL;
+}
+
 void		ft_del_list(t_pile **lst)
 {
 	t_pile *tmp;

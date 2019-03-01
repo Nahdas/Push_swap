@@ -56,6 +56,7 @@ t_pile **follow)
 {
 	while (*follow != NULL)
 	{
+		printf("bubble_sort follow %p\n", follow);
 		if ((*copy)->content > (*follow)->content)
 		{
 			(*copy)->next = (*follow)->next;
