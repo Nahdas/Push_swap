@@ -11,7 +11,9 @@
 # **************************************************************************** #
 
 NAME = libft.a
-CC = gcc -Wall -Werror -Wextra
+CC = @ gcc -Wall -Werror -Wextra
+
+
 SRC = ft_isalnum.c	ft_isprint.c	ft_memcpy.c	ft_strchr.c	ft_strlcat.c\
   	  ft_strncpy.c	ft_tolower.c\
 	  ft_isalpha.c	ft_memccpy.c	ft_memmove.c	ft_strcmp.c\
@@ -35,14 +37,14 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	cp $(OBJ) ../
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@cp $(OBJ) ../
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 clean :
-	rm -f $(OBJ) $(addprefix ../, $(OBJ))
+	@rm -f $(OBJ) $(addprefix ../, $(OBJ))
 
 re : fclean all

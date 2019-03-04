@@ -11,9 +11,13 @@
 # **************************************************************************** #
 
 NAME = ../checker
-CC = gcc
+CC = @ gcc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES =  -I ./includes/ 
+
+RED=$'\x1b[31m
+GREEN=$'\x1b[32m
+END=$'\x1b[0m
 
 SRC_PUSH = ../src_push/ft_algo_a.c\
            ../src_push/ft_algo_aux.c\
@@ -38,31 +42,22 @@ SRC_CHECK =	checker.c\
 
 OBJ_CHECK = $(SRC_CHECK:.c=.o)
 
-OBJ_PUSH = ft_algo_a.o\
-           ft_algo_aux.o\
-		   ft_algo_b.o\
-		   ft_aux.o\
-		   ft_double.o\
-		   ft_operations_2.o\
-		   ft_push_swap.o\
-		   ft_select.o\
-		   ft_simple_sort.o\
-		   ft_sort_that.o\
-		   ft_inst_var.o
+OBJ_PUSH = $(SRC_PUSH:.c=.o)
 
-OBJ = 		ft_long_atoi.o\
-	  		ft_operations_1.o
+OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
 
-$(NAME) :
-	$(CC) $(CFLAGS) -c $(INCLUDES) $(SRC) $(SRC_CHECK) $(SRC_PUSH)
-	$(CC) $(OBJ) $(OBJ_CHECK) $(OBJ_PUSH) -o $(NAME) ../libft/libftprintf.a 
+$(NAME) : $(OBJ_CHECK) $(OBJ_PUSH) $(OBJ)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(OBJ_CHECK) $(OBJ_PUSH) -o $(NAME) ../libft/libftprintf.a
+	@echo "$(GREEN)CHECKER COMPILED$(END)"
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "$(RED)CHECKER BINARIES REMOVED$(END)"
 
 clean :
-	rm -f $(OBJ) $(OBJ_CHECK) $(OBJ_PUSH)
+	@rm -f $(OBJ) $(OBJ_CHECK) $(OBJ_PUSH)
+	@echo "$(RED)CHECKER OBJECTS REMOVED$(END)"
 
 re : fclean all

@@ -12,8 +12,13 @@
 # **************************************************************************** #
 
 NAME = libftprintf.a
-CC = gcc
+CC = @ gcc
 CFLAGS = -Wall -Wextra -Werror -I../libft/
+
+RED=$'\x1b[31m
+GREEN=$'\x1b[32m
+END=$'\x1b[0m
+
 SRC = ft_printf.c\
 	  ft_list.c\
 	  ft_capture_the_flag.c\
@@ -55,18 +60,21 @@ OBJ = $(SRC:.c=.o)
 all : lib $(NAME)
 
 lib :
-	make -C ./libft
+	@make -C ./libft
 
 $(NAME) : $(OBJ)
-	ar rc $(NAME) $(OBJ) $(OBJLIBFT)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJ) $(OBJLIBFT)
+	@ranlib $(NAME)
+	@echo "$(GREEN)LIBFT COMPILED$(END)"
 
 fclean : clean
-	make fclean -C ./libft
-	rm -f $(NAME)
+	@make fclean -C ./libft
+	@rm -f $(NAME)
+	@echo "$(RED)LIBFT BINARIES REMOVED$(END)"
 
 clean :
-	make clean -C ./libft
-	rm -f $(OBJ)
+	@make clean -C ./libft
+	@rm -f $(OBJ)
+	@echo "$(RED)LIBFT OBJECTS REMOVED$(END)"
 
 re : fclean all

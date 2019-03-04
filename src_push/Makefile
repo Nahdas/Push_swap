@@ -11,9 +11,13 @@
 # **************************************************************************** #
 
 NAME = ../push_swap
-CC = gcc
+CC = @ gcc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES =  -I ./includes/ 
+
+RED=$'\x1b[31m
+GREEN=$'\x1b[32m
+END=$'\x1b[0m
 
 SRC_UP = ../ft_long_atoi.c\
 	  	 ../ft_operations_1.c\
@@ -35,25 +39,24 @@ SRC_PUSH = ft_algo_a.c\
 		   main_push.c\
 		   ft_inst_var.c
 
-OBJ_UP = ft_long_atoi.o\
-		 ft_operations_1.o
+OBJ_UP = $(SRC_UP:.c=.o)
 
-OBJ_CHECK = checker.o\
-	  	    ft_check_list.o\
-	  		ft_options.o\
+OBJ_CHECK = $(SRC_CHECK:.c=.o)
 
 OBJ_PUSH = $(SRC_PUSH:.c=.o)
 
 all : $(NAME)
 
-$(NAME) :
-	$(CC) $(CFLAGS) -c $(INCLUDES) $(SRC_UP) $(SRC_CHECK) $(SRC_PUSH)
-	$(CC) $(OBJ_UP) $(OBJ_CHECK) $(OBJ_PUSH) -o $(NAME) ../libft/libftprintf.a 
+$(NAME) : $(OBJ_UP) $(OBJ_CHECK) $(OBJ_PUSH)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJ_UP) $(OBJ_CHECK) $(OBJ_PUSH) -o $(NAME) ../libft/libftprintf.a
+	@echo "$(GREEN)PUSH_SWAP COMPILED$(END)"
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "$(RED)PUSH_SWAP BINARIES REMOVED$(END)"
 
 clean :
-	rm -f $(OBJ_UP) $(OBJ_CHECK) $(OBJ_PUSH)
+	@rm -f $(OBJ_UP) $(OBJ_CHECK) $(OBJ_PUSH)
+	@echo "$(RED)PUSH_SWAP OBJECTS REMOVED$(END)"
 
 re : fclean all
