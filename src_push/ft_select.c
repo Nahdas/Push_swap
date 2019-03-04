@@ -12,28 +12,28 @@
 
 #include "includes/ft_push_swap.h"
 
-void	ft_pa_pb(t_list **head, t_list **prev, t_list **follow, t_list **inst)
+void	ft_pa_pb(t_list *head, t_list *prev, t_list *follow, t_list **inst)
 {
-	while ((*follow) != NULL)
+	while (follow != NULL)
 	{
-		if ((ft_strcmp("pa", (*head)->content) == 0 && ft_strcmp("pb",
-		(*follow)->content) == 0) || (ft_strcmp("pb", (*head)->content) == 0
-		&& ft_strcmp("pa", (*follow)->content) == 0))
+		if ((ft_strcmp("pa", head->content) == 0 && ft_strcmp("pb",
+		follow->content) == 0) || (ft_strcmp("pb", head->content) == 0
+		&& ft_strcmp("pa", follow->content) == 0))
 		{
-			(*prev)->next = (*follow)->next;
-			if (*head)
-				free(*head);
-			if (*follow)
-				free(*follow);
-			(*head) = *inst;
-			(*follow) = (*head)->next;
-			(*prev) = NULL;
+			prev->next = follow->next;
+			//if (*head)
+				ft_free(&head);
+			//if (*follow)
+				ft_free(&follow);
+			head = *inst;
+			follow = head->next;
+			prev = NULL;
 		}
 		else
 		{
-			(*prev) = (*head);
-			(*head) = (*head)->next;
-			(*follow) = (*head)->next;
+			prev = head;
+			head = head->next;
+			follow = head->next;
 		}
 	}
 }

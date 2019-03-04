@@ -12,21 +12,21 @@
 
 #include "src_checker/includes/checker.h"
 
-int		ft_is_sort(t_pile **lst, t_pile **lst_b)
+int		ft_is_sort(t_pile *lst, t_pile *lst_b)
 {
 	t_pile *tmp;
 
-	if ((*lst_b))
+	if (lst_b)
 		return (0);
-	if ((*lst)->next != NULL)
-		tmp = (*lst)->next;
+	if (lst->next != NULL)
+		tmp = lst->next;
 	else
-		tmp = (*lst);
+		tmp = lst;
 	while (tmp->next != NULL)
 	{
-		if (tmp->content < (*lst)->content)
+		if (tmp->content < lst->content)
 			return (0);
-		(*lst) = tmp;
+		lst = tmp;
 		tmp = tmp->next;
 	}
 	return (1);

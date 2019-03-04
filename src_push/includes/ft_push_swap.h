@@ -15,6 +15,8 @@
 
 # include "../../src_checker/includes/checker.h"
 
+void	ft_free(t_list **lst);
+
 void	ft_del_inst(t_list **lst);
 
 void	ft_print_inst(t_list *inst);
@@ -33,7 +35,7 @@ void	ft_rra_sa(t_pile **lst_a, t_pile **lst_b, t_list **inst);
 
 void	ft_sa_rra(t_pile **lst_a, t_pile **lst_b, t_list **inst);
 
-void	ft_pa_pb(t_list **head, t_list **prev, t_list **follow, t_list **inst);
+void	ft_pa_pb(t_list *head, t_list *prev, t_list *follow, t_list **inst);
 
 void	ft_double(t_list **inst);
 

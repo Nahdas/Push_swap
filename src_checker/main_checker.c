@@ -14,6 +14,12 @@
 
 void	ft_del_list(t_pile **lst);
 
+void 	ft_del_all(t_pile **lst_a, t_pile **lst_b)
+{
+	ft_del_list(lst_a);
+	ft_del_list(lst_b);
+}
+
 int		main(int argc, char **argv)
 {
 	t_pile	*lst;
@@ -31,14 +37,15 @@ int		main(int argc, char **argv)
 	if (!(lst = ft_to_list(argv, &lst, opt)) && lst == NULL)
 		return (0);
 	if (!ft_check_list(lst))
+	{
+		ft_del_all(&lst, &lst_b);
 		return (0);
+	}
 	opt = ft_resolve(&lst, &lst_b, opt, &line);
-	if (ft_is_sort(&lst, &lst_b) && opt == 1)
+	if (ft_is_sort(lst, lst_b) && opt == 1)
 		ft_putstr("OK\n");
 	else if (opt == 1)
 		ft_putstr("K0\n");
-	ft_del_list(&lst);
-	ft_del_list(&lst_b);
-	while(1);
+	ft_del_all(&lst, &lst_b);
 	return (0);
 }

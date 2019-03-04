@@ -1,5 +1,12 @@
 #include "includes/ft_push_swap.h"
 
+void		ft_del_all(t_pile **lst, t_pile **lst_b, t_list *inst)
+{
+	ft_del_list(lst);
+	ft_del_list(lst_b);
+	ft_del_inst(&inst);	
+}
+
 int			main(int argc, char **argv)
 {
 	t_pile	*lst;
@@ -27,9 +34,7 @@ int			main(int argc, char **argv)
 		ft_double(&inst);
 		ft_print_inst(inst);
 	}
-	ft_del_list(&lst);
-	ft_del_list(&lst_b);
-	ft_del_inst(&inst);	
-	while (1);
+	ft_del_all(&lst, &lst_b, inst);
+	//while (1);
 	return (1);
 }

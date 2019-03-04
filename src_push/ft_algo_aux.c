@@ -12,6 +12,14 @@
 
 #include "includes/ft_push_swap.h"
 
+void	ft_free(t_list **lst)
+{
+	//free((*lst)->content);
+	//(*lst)->content = NULL;
+	free(*lst);
+	lst = NULL;
+}
+
 int		ft_rot_a(t_pile **lst_a, t_pile **lst_b, t_list **inst, int *ras)
 {
 	ft_rot_operations("ra", lst_a, lst_b, inst);

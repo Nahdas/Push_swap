@@ -18,10 +18,9 @@ void		ft_del_inst(t_list **lst)
 
 	while (*lst)
 	{
-		tmp = *lst;
-		(*lst) = (*lst)->next;
-		free(tmp);
-		tmp = NULL;
+		tmp = (*lst)->next;
+		ft_free(lst);
+		*lst = tmp;
 	}
 	lst = NULL;
 }

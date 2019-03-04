@@ -61,7 +61,7 @@ int						rotate(t_pile **lst);
 
 int						rev_rotate(t_pile **lst);
 
-int						ft_is_sort(t_pile **lst, t_pile **lst_b);
+int						ft_is_sort(t_pile *lst, t_pile *lst_b);
 
 void					*ft_write_null(void);
 
