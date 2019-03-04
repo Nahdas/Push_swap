@@ -24,7 +24,8 @@ SRC_PUSH = ../src_push/ft_algo_a.c\
 		   ../src_push/ft_push_swap.c\
 		   ../src_push/ft_select.c\
 		   ../src_push/ft_simple_sort.c\
-		   ../src_push/ft_sort_that.c	
+		   ../src_push/ft_sort_that.c\
+		   ../src_push/ft_inst_var.c
 
 SRC = ../ft_long_atoi.c\
 	  ../ft_operations_1.c
@@ -46,7 +47,8 @@ OBJ_PUSH = ft_algo_a.o\
 		   ft_push_swap.o\
 		   ft_select.o\
 		   ft_simple_sort.o\
-		   ft_sort_that.o	
+		   ft_sort_that.o\
+		   ft_inst_var.o
 
 OBJ = 		ft_long_atoi.o\
 	  		ft_operations_1.o

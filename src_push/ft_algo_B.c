@@ -12,21 +12,21 @@
 
 #include "includes/ft_push_swap.h"
 
-int		ft_rot_b(t_pile **lst_a, t_pile **lst_b, t_list **inst, int *rbs)
+int		ft_rot_b(t_pile **lst_a, t_pile **lst_b, t_inst **inst, int *rbs)
 {
 	ft_rot_operations("rb", lst_a, lst_b, inst);
 	(*rbs)++;
 	return (1);
 }
 
-int		ft_med_b(t_pile **lst_a, t_pile **lst_b, t_list **inst)
+int		ft_med_b(t_pile **lst_a, t_pile **lst_b, t_inst **inst)
 {
 	ft_push_operations("pa", lst_a, lst_b, inst);
 	ft_rot_operations("ra", lst_a, lst_b, inst);
 	return (1);
 }
 
-int		ft_partition_b(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
+int		ft_partition_b(t_pile **lst_a, t_pile **lst_b, int len, t_inst **inst)
 {
 	t_pile	*head;
 	int		i;
@@ -55,7 +55,7 @@ int		ft_partition_b(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
 	return (rbs);
 }
 
-void	ft_qs_putback_b(t_pile **lst_a, t_pile **lst_b, int rbs, t_list **inst)
+void	ft_qs_putback_b(t_pile **lst_a, t_pile **lst_b, int rbs, t_inst **inst)
 {
 	int quick;
 
@@ -79,7 +79,7 @@ void	ft_qs_putback_b(t_pile **lst_a, t_pile **lst_b, int rbs, t_list **inst)
 	}
 }
 
-int		ft_quick_sort_b(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
+int		ft_quick_sort_b(t_pile **lst_a, t_pile **lst_b, int len, t_inst **inst)
 {
 	int tmp;
 	int rbs;

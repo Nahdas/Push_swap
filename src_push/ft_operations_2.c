@@ -13,7 +13,7 @@
 #include "includes/ft_push_swap.h"
 
 int			ft_swap_operations(char *op, t_pile **lst_a, t_pile **lst_b,
-t_list **inst)
+t_inst **inst)
 {
 	if (ft_strcmp("sa", op) == 0)
 	{
@@ -35,7 +35,7 @@ t_list **inst)
 }
 
 int			ft_push_operations(char *op, t_pile **lst_a, t_pile **lst_b,
-t_list **inst)
+t_inst **inst)
 {
 	if (ft_strcmp("pa", op) == 0)
 	{
@@ -51,7 +51,7 @@ t_list **inst)
 }
 
 int			ft_rot_operations(char *op, t_pile **lst_a, t_pile **lst_b,
-t_list **inst)
+t_inst **inst)
 {
 	if (ft_strcmp("ra", op) == 0)
 	{
@@ -73,7 +73,7 @@ t_list **inst)
 }
 
 int			ft_rev_rot_operations(char *op, t_pile **lst_a, t_pile **lst_b,
-t_list **inst)
+t_inst **inst)
 {
 	if (ft_strcmp(op, "rra") == 0)
 	{

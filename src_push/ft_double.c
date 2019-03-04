@@ -12,7 +12,7 @@
 
 #include "includes/ft_push_swap.h"
 
-void	ft_ra_rra(t_list *head, t_list *prev, t_list *follow, t_list **inst)
+void	ft_ra_rra(t_inst *head, t_inst *prev, t_inst *follow, t_inst **inst)
 {
 	while (follow != NULL)
 	{
@@ -21,10 +21,8 @@ void	ft_ra_rra(t_list *head, t_list *prev, t_list *follow, t_list **inst)
 		&& ft_strcmp("ra", follow->content) == 0))
 		{
 			prev->next = follow->next;
-			//if (*head)
-				ft_free(&head);
-			//if (*follow)
-				ft_free(&follow);
+			ft_free(&head);
+			ft_free(&follow);
 			head = *inst;
 			follow = head->next;
 			prev = NULL;
@@ -38,7 +36,7 @@ void	ft_ra_rra(t_list *head, t_list *prev, t_list *follow, t_list **inst)
 	}
 }
 
-void	ft_rb_rrb(t_list *head, t_list *prev, t_list *follow, t_list **inst)
+void	ft_rb_rrb(t_inst *head, t_inst *prev, t_inst *follow, t_inst **inst)
 {
 	while (follow != NULL)
 	{
@@ -47,10 +45,8 @@ void	ft_rb_rrb(t_list *head, t_list *prev, t_list *follow, t_list **inst)
 		&& ft_strcmp("rb", follow->content) == 0))
 		{
 			prev->next = follow->next;
-			//if (*head)
-				ft_free(&head);
-			//if (*follow)
-				ft_free(&follow);
+			ft_free(&head);
+			ft_free(&follow);
 			head = *inst;
 			follow = head->next;
 			prev = NULL;
@@ -64,7 +60,7 @@ void	ft_rb_rrb(t_list *head, t_list *prev, t_list *follow, t_list **inst)
 	}
 }
 
-void	ft_ra_rb(t_list *head, t_list *prev, t_list *follow, t_list **inst)
+void	ft_ra_rb(t_inst *head, t_inst *prev, t_inst *follow, t_inst **inst)
 {
 	while (follow != NULL)
 	{
@@ -72,10 +68,9 @@ void	ft_ra_rb(t_list *head, t_list *prev, t_list *follow, t_list **inst)
 		follow->content) == 0) || (ft_strcmp("rb", head->content) == 0
 		&& ft_strcmp("ra", follow->content) == 0))
 		{
-			head->content = "rr";
+			head->content[1] = 'r';
 			head->next = follow->next;
-			//if (*follow)
-				ft_free(&follow);
+			ft_free(&follow);
 			head = *inst;
 			follow = head->next;
 			prev = NULL;
@@ -89,7 +84,7 @@ void	ft_ra_rb(t_list *head, t_list *prev, t_list *follow, t_list **inst)
 	}
 }
 
-void	ft_rra_rrb(t_list *head, t_list *prev, t_list *follow, t_list **inst)
+void	ft_rra_rrb(t_inst *head, t_inst *prev, t_inst *follow, t_inst **inst)
 {
 	while (follow != NULL)
 	{
@@ -97,10 +92,9 @@ void	ft_rra_rrb(t_list *head, t_list *prev, t_list *follow, t_list **inst)
 		follow->content) == 0) || (ft_strcmp("rrb", head->content) == 0
 		&& ft_strcmp("rra", follow->content) == 0))
 		{
-			head->content = "rrr";
+			head->content[2] = 'r';
 			head->next = follow->next;
-			//if (*follow)
-				ft_free(&follow);
+			ft_free(&follow);
 			head = *inst;
 			follow = head->next;
 			prev = NULL;
@@ -114,11 +108,11 @@ void	ft_rra_rrb(t_list *head, t_list *prev, t_list *follow, t_list **inst)
 	}
 }
 
-void	ft_double(t_list **inst)
+void	ft_double(t_inst **inst)
 {
-	t_list	*head;
-	t_list	*prev;
-	t_list	*follow;
+	t_inst	*head;
+	t_inst	*prev;
+	t_inst	*follow;
 
 	head = *inst;
 	prev = NULL;

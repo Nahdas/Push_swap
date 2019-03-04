@@ -12,22 +12,22 @@
 
 #include "includes/ft_push_swap.h"
 
-void	ft_free(t_list **lst)
+void	ft_free(t_inst **lst)
 {
-	//free((*lst)->content);
-	//(*lst)->content = NULL;
+	free((*lst)->content);
+	(*lst)->content = NULL;
 	free(*lst);
 	lst = NULL;
 }
 
-int		ft_rot_a(t_pile **lst_a, t_pile **lst_b, t_list **inst, int *ras)
+int		ft_rot_a(t_pile **lst_a, t_pile **lst_b, t_inst **inst, int *ras)
 {
 	ft_rot_operations("ra", lst_a, lst_b, inst);
 	(*ras)++;
 	return (1);
 }
 
-int		ft_med_a(t_pile **lst_a, t_pile **lst_b, t_list **inst)
+int		ft_med_a(t_pile **lst_a, t_pile **lst_b, t_inst **inst)
 {
 	ft_push_operations("pb", lst_a, lst_b, inst);
 	ft_rot_operations("rb", lst_a, lst_b, inst);

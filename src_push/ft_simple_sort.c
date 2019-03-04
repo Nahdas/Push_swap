@@ -12,7 +12,7 @@
 
 #include "includes/ft_push_swap.h"
 
-void		ft_sort_three(t_pile **lst_a, t_pile **lst_b, t_list **inst)
+void	ft_sort_three(t_pile **lst_a, t_pile **lst_b, t_inst **inst)
 {
 	t_pile *first;
 	t_pile *sec;
@@ -38,7 +38,7 @@ void		ft_sort_three(t_pile **lst_a, t_pile **lst_b, t_list **inst)
 		ft_swap_operations("sa", lst_a, lst_b, inst);
 }
 
-void		ft_sort_four(t_pile **lst_a, t_pile **lst_b, t_list **inst)
+void	ft_sort_four(t_pile **lst_a, t_pile **lst_b, t_inst **inst)
 {
 	int ras;
 	int min;
@@ -60,7 +60,7 @@ void		ft_sort_four(t_pile **lst_a, t_pile **lst_b, t_list **inst)
 	ft_put_back(lst_a, lst_b, inst, ras);
 }
 
-void		ft_sort_five(t_pile **lst_a, t_pile **lst_b, t_list **inst)
+void	ft_sort_five(t_pile **lst_a, t_pile **lst_b, t_inst **inst)
 {
 	int min;
 	int max;
@@ -78,8 +78,7 @@ void		ft_sort_five(t_pile **lst_a, t_pile **lst_b, t_list **inst)
 	ft_insert_and_set(lst_a, lst_b, inst);
 }
 
-int			ft_simple_sort(t_pile **lst_a, t_pile **lst_b, int len,
-t_list **inst)
+int		ft_simple_sort(t_pile **lst_a, t_pile **lst_b, int len, t_inst **inst)
 {
 	t_pile *head;
 	t_pile *follow;

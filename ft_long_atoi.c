@@ -25,21 +25,6 @@ int				ft_prealable(char **argv)
 	return (opt);
 }
 
-void			ft_lst_add(t_list **alst, t_list *news)
-{
-	t_list *current;
-
-	if (alst && news)
-	{
-		current = *alst;
-		while (current->next != NULL)
-		{
-			current = current->next;
-		}
-		current->next = news;
-	}
-}
-
 void			ft_pile_add(t_pile **alst, t_pile *news)
 {
 	t_pile *current;

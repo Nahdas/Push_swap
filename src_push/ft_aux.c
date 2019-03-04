@@ -12,19 +12,19 @@
 
 #include "includes/ft_push_swap.h"
 
-void		ft_sa_rra(t_pile **lst_a, t_pile **lst_b, t_list **inst)
+void		ft_sa_rra(t_pile **lst_a, t_pile **lst_b, t_inst **inst)
 {
 	ft_swap_operations("sa", lst_a, lst_b, inst);
 	ft_rev_rot_operations("rra", lst_a, lst_b, inst);
 }
 
-void		ft_rra_sa(t_pile **lst_a, t_pile **lst_b, t_list **inst)
+void		ft_rra_sa(t_pile **lst_a, t_pile **lst_b, t_inst **inst)
 {
 	ft_rev_rot_operations("rra", lst_a, lst_b, inst);
 	ft_swap_operations("sa", lst_a, lst_b, inst);
 }
 
-void		ft_put_back(t_pile **lst_a, t_pile **lst_b, t_list **inst, int ras)
+void		ft_put_back(t_pile **lst_a, t_pile **lst_b, t_inst **inst, int ras)
 {
 	int quick;
 
@@ -48,7 +48,7 @@ void		ft_put_back(t_pile **lst_a, t_pile **lst_b, t_list **inst, int ras)
 	}
 }
 
-void		ft_insert_and_set(t_pile **lst_a, t_pile **lst_b, t_list **inst)
+void		ft_insert_and_set(t_pile **lst_a, t_pile **lst_b, t_inst **inst)
 {
 	int ras;
 

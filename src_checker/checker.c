@@ -12,23 +12,6 @@
 
 #include "includes/checker.h"
 
-t_list		*ft_to_inst(t_list **inst, char *line)
-{
-	t_list *head;
-
-	if (!(*inst))
-	{
-		*inst = ft_lstnew(line, ft_strlen(line));
-		head = *inst;
-	}
-	else
-	{
-		head = ft_lstnew(line, ft_strlen(line));
-		ft_lst_add(inst, head);
-	}
-	return (*inst);
-}
-
 t_pile		*ft_to_list(char **argv, t_pile **lst, int opt)
 {
 	int			i;

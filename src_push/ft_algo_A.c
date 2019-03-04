@@ -12,7 +12,7 @@
 
 #include "includes/ft_push_swap.h"
 
-int		ft_partition_a(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
+int		ft_partition_a(t_pile **lst_a, t_pile **lst_b, int len, t_inst **inst)
 {
 	t_pile	*head;
 	int		i;
@@ -55,7 +55,7 @@ int		ft_two_sorted(t_pile **lst, int order)
 	return (1);
 }
 
-void	ft_qs_putback_a(t_pile **lst_a, t_pile **lst_b, int ras, t_list **inst)
+void	ft_qs_putback_a(t_pile **lst_a, t_pile **lst_b, int ras, t_inst **inst)
 {
 	int quick;
 
@@ -79,7 +79,7 @@ void	ft_qs_putback_a(t_pile **lst_a, t_pile **lst_b, int ras, t_list **inst)
 	}
 }
 
-int		ft_quick_sort_a(t_pile **lst_a, t_pile **lst_b, int len, t_list **inst)
+int		ft_quick_sort_a(t_pile **lst_a, t_pile **lst_b, int len, t_inst **inst)
 {
 	int tmp;
 	int ras;

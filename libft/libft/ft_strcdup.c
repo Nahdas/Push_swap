@@ -16,7 +16,7 @@ char	*ft_strcdup(const char *s1, char c)
 {
 	char	*dup;
 	int		n;
-	
+
 	if (!s1)
 		return (NULL);
 	if (!(dup = (char*)malloc(sizeof(char) * (ft_strclen(s1, c) + 1))))

@@ -92,11 +92,11 @@ int			ft_get_median(t_pile *lst, int len)
 	follow = copy->next;
 	ft_bubble_sort(&copy, &head, &prev, &follow);
 	res = ft_middle(head, len);
-	ft_del_list(&copy);
+	ft_del_list(&head);
 	return (res);
 }
 
-int			ft_sort_that(t_pile **lst_a, t_pile **lst_b, t_list **inst)
+int			ft_sort_that(t_pile **lst_a, t_pile **lst_b, t_inst **inst)
 {
 	int		size;
 	t_pile	*head;

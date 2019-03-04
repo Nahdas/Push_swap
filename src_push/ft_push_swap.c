@@ -12,15 +12,16 @@
 
 #include "includes/ft_push_swap.h"
 
-void		ft_del_inst(t_list **lst)
+void		ft_del_inst(t_inst **lst)
 {
-	t_list *tmp;
+	t_inst *tmp;
 
 	while (*lst)
 	{
-		tmp = (*lst)->next;
-		ft_free(lst);
-		*lst = tmp;
+		tmp = *lst;
+		(*lst) = (*lst)->next;
+		ft_free(&tmp);
+		tmp = NULL;
 	}
 	lst = NULL;
 }
@@ -51,7 +52,7 @@ void		ft_print_list(t_pile *lst)
 	}
 }
 
-void		ft_print_inst(t_list *inst)
+void		ft_print_inst(t_inst *inst)
 {
 	if (inst)
 	{
@@ -63,7 +64,7 @@ void		ft_print_inst(t_list *inst)
 	}
 }
 
-int			ft_assemble(t_pile **lst, t_pile **lst_b, t_list **inst)
+int			ft_assemble(t_pile **lst, t_pile **lst_b, t_inst **inst)
 {
 	int i;
 	int size;

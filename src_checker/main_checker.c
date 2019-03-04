@@ -12,9 +12,7 @@
 
 #include "includes/checker.h"
 
-void	ft_del_list(t_pile **lst);
-
-void 	ft_del_all(t_pile **lst_a, t_pile **lst_b)
+void	ft_del_all(t_pile **lst_a, t_pile **lst_b)
 {
 	ft_del_list(lst_a);
 	ft_del_list(lst_b);
@@ -30,8 +28,7 @@ int		main(int argc, char **argv)
 	line = "";
 	if (argc < 2)
 		return (0);
-	opt = ft_prealable(argv);
-	if (opt < 0)
+	if ((opt = ft_prealable(argv)) < 0)
 		return (0);
 	lst = NULL;
 	if (!(lst = ft_to_list(argv, &lst, opt)) && lst == NULL)

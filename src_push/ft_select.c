@@ -12,7 +12,7 @@
 
 #include "includes/ft_push_swap.h"
 
-void	ft_pa_pb(t_list *head, t_list *prev, t_list *follow, t_list **inst)
+void	ft_pa_pb(t_inst *head, t_inst *prev, t_inst *follow, t_inst **inst)
 {
 	while (follow != NULL)
 	{
@@ -21,10 +21,8 @@ void	ft_pa_pb(t_list *head, t_list *prev, t_list *follow, t_list **inst)
 		&& ft_strcmp("pa", follow->content) == 0))
 		{
 			prev->next = follow->next;
-			//if (*head)
-				ft_free(&head);
-			//if (*follow)
-				ft_free(&follow);
+			ft_free(&head);
+			ft_free(&follow);
 			head = *inst;
 			follow = head->next;
 			prev = NULL;
@@ -80,8 +78,10 @@ int		ft_that_is_unsorted(t_pile *lst, int len)
 {
 	t_pile *tmp;
 	t_pile *copy;
+	t_pile *start;
 
 	ft_copy_list(lst, &copy, len);
+	start = copy;
 	if (copy->next != NULL)
 		tmp = copy->next;
 	else
@@ -89,11 +89,14 @@ int		ft_that_is_unsorted(t_pile *lst, int len)
 	while (tmp != NULL)
 	{
 		if (tmp->content > copy->content)
+		{
+			ft_del_list(&start);
 			return (0);
+		}
 		copy = tmp;
 		tmp = tmp->next;
 	}
-	ft_del_list(&copy);
+	ft_del_list(&start);
 	return (1);
 }
 
@@ -101,8 +104,10 @@ int		ft_that_is_sorted(t_pile *lst, int len)
 {
 	t_pile *tmp;
 	t_pile *copy;
+	t_pile *start;
 
 	ft_copy_list(lst, &copy, len);
+	start = copy;
 	if (copy->next != NULL)
 		tmp = copy->next;
 	else
@@ -110,10 +115,13 @@ int		ft_that_is_sorted(t_pile *lst, int len)
 	while (tmp != NULL)
 	{
 		if (tmp->content < copy->content)
+		{
+			ft_del_list(&start);
 			return (0);
+		}
 		copy = tmp;
 		tmp = tmp->next;
 	}
-	ft_del_list(&copy);
+	ft_del_list(&start);
 	return (1);
 }
