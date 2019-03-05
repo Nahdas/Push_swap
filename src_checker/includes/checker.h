@@ -15,7 +15,6 @@
 
 # include "../../libft/ft_printf.h"
 # include <stdlib.h>
-# include <stdio.h>
 
 struct					s_pile
 {
